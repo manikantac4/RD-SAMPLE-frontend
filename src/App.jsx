@@ -30,12 +30,9 @@ const AcademicHeader = () => {
           <div className="bokeh bokeh-8"></div>
         </div>
         
-        <div className="relative z-10">
-          <div className="animate-slide inline-flex whitespace-nowrap">
-            <span className="text-sm font-bold tracking-wide px-8 text-red-700 sparkle-text">
-              Golden Jubilee Year of Siddhartha Academy of General & Technical Education, Vijayawada
-            </span>
-            <span className="text-sm font-bold tracking-wide px-8 text-red-700 sparkle-text">
+        <div className="relative z-10 overflow-hidden">
+          <div className="animate-slide whitespace-nowrap">
+            <span className="text-sm font-bold tracking-wide text-red-700 sparkle-text">
               Golden Jubilee Year of Siddhartha Academy of General & Technical Education, Vijayawada
             </span>
           </div>
@@ -56,21 +53,21 @@ const AcademicHeader = () => {
         }`}
       >
         {/* Main Branding Section */}
-        <div className="container mx-auto px-6 py-1.5">
-          <div className="flex items-center justify-between gap-4">
+        <div className="container mx-auto px-4 sm:px-6 py-1.5">
+          <div className="flex items-center justify-center gap-4 md:gap-6 lg:gap-8 relative">
             {/* Left: V.R. Siddhartha Logo */}
             <div className="flex items-center flex-shrink-0">
               <img 
                 src={Logo}
                 alt="V.R. Siddhartha Academy Logo" 
-                className="h-28 w-auto object-contain"
+                className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain"
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
               {/* Fallback if image not found */}
-              <div className="hidden w-28 h-28 flex items-center justify-center">
+              <div className="hidden w-20 sm:w-24 md:w-28 lg:w-32 h-20 sm:h-24 md:h-28 lg:h-32 flex items-center justify-center">
                 <div className="text-center border-2 border-gray-300 p-2">
                   <div className="text-purple-600 font-bold text-xs">VRS LOGO</div>
                 </div>
@@ -78,13 +75,13 @@ const AcademicHeader = () => {
             </div>
 
             {/* Center: Primary Branding */}
-<div className="flex-1 flex flex-col items-center text-center px-4">
+<div className="flex-1 max-w-3xl flex flex-col items-center text-center px-2 sm:px-4">
   {/* SIDDHARTHA + underline */}
   <div className="inline-block">
     <h1 className="
       font-serif
       font-extrabold
-      text-[40px] md:text-[44px]
+      text-[28px] sm:text-[32px] md:text-[40px] lg:text-[44px]
       tracking-[0.06em]
       leading-none
       text-[#0b2c6f]
@@ -93,13 +90,13 @@ const AcademicHeader = () => {
     </h1>
 
     {/* underline exactly matching text width */}
-    <div className="h-[2.5px] bg-[#0b2c6f] w-full mt-[3px]"></div>
+    <div className="h-[2px] md:h-[2.5px] bg-[#0b2c6f] w-full mt-[2px] md:mt-[3px]"></div>
   </div>
 
   {/* Academy line */}
   <p className="
     font-serif
-    text-[16px]
+    text-[12px] sm:text-[14px] md:text-[16px]
     font-bold
     tracking-[0.06em]
     text-black
@@ -111,7 +108,7 @@ const AcademicHeader = () => {
   {/* Deemed line */}
   <p className="
     font-serif
-    text-[14px]
+    text-[11px] sm:text-[12px] md:text-[14px]
     text-black
     mt-[2px]
   ">
@@ -121,7 +118,7 @@ const AcademicHeader = () => {
   {/* UGC line */}
   <p className="
     font-serif
-    text-[12.5px]
+    text-[10px] sm:text-[11px] md:text-[12.5px]
     text-black
   ">
     (Under Section 3 of UGC Act, 1956)
@@ -130,7 +127,7 @@ const AcademicHeader = () => {
   {/* Address line */}
   <p className="
     font-serif
-    text-[11.5px]
+    text-[9px] sm:text-[10px] md:text-[11.5px]
     text-black
     mt-[2px]
   ">
@@ -139,10 +136,10 @@ const AcademicHeader = () => {
 </div>
 
             {/* Right: Partner Logos */}
-            <div className="flex items-center gap-3 flex-shrink-0">
-              {/* Springer Logo */}
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+              {/* Springer Logo - 30% larger */}
               <div className="flex flex-col items-center">
-                <div className="w-24 h-24 flex items-center justify-center">
+                <div className="w-28 sm:w-32 md:w-36 lg:w-40 h-28 sm:h-32 md:h-36 lg:h-40 flex items-center justify-center">
                   <img 
                     src={SpringerLogo}
                     alt="Springer" 
@@ -158,8 +155,8 @@ const AcademicHeader = () => {
                 </div>
               </div>
               
-              {/* Research Conclave Logo */}
-              <div className="w-24 h-24 flex items-center justify-center">
+              {/* Research Conclave Logo - 30% larger */}
+              <div className="w-28 sm:w-32 md:w-36 lg:w-40 h-28 sm:h-32 md:h-36 lg:h-40 flex items-center justify-center">
                 <img 
                   src={RDLogo}
                   alt="Research Conclave" 
@@ -175,7 +172,7 @@ const AcademicHeader = () => {
               </div>
               
               {/* 50 Years Golden Jubilee Logo */}
-              <div className="w-24 h-24 flex items-center justify-center">
+              <div className="w-20 sm:w-24 md:w-28 lg:w-32 h-20 sm:h-24 md:h-28 lg:h-32 flex items-center justify-center">
                 <img 
                   src={GoldenLogo}
                   alt="50 Years Golden Jubilee" 
@@ -188,7 +185,7 @@ const AcademicHeader = () => {
                 />
                 <div className="hidden bg-gradient-to-br from-yellow-400 to-amber-600 w-full h-full flex items-center justify-center">
                   <div className="text-center">
-                    <span className="text-white font-black text-2xl block leading-none">50</span>
+                    <span className="text-white font-black text-xl sm:text-2xl block leading-none">50</span>
                     <span className="text-white text-xs font-bold">YEARS</span>
                   </div>
                 </div>
@@ -199,12 +196,12 @@ const AcademicHeader = () => {
 
         {/* Navigation Bar */}
         <nav className="bg-[#1a2b4a] border-t border-gray-700">
-          <div className="container mx-auto px-6">
-            <ul className="flex items-center justify-center gap-1">
+          <div className="container mx-auto px-2 sm:px-4 md:px-6">
+            <ul className="flex flex-wrap items-center justify-center gap-0.5 sm:gap-1">
               <li>
                 <a 
                   href="#home" 
-                  className="block px-5 py-2.5 text-white text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="block px-2 sm:px-3 md:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   Home
                 </a>
@@ -212,7 +209,7 @@ const AcademicHeader = () => {
               <li>
                 <a 
                   href="#about" 
-                  className="block px-5 py-2.5 text-white text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="block px-2 sm:px-3 md:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   About
                 </a>
@@ -220,7 +217,7 @@ const AcademicHeader = () => {
               <li>
                 <a 
                   href="#industry-academia" 
-                  className="block px-5 py-2.5 text-white text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="block px-2 sm:px-3 md:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   Industry-Academia Meet
                 </a>
@@ -228,7 +225,7 @@ const AcademicHeader = () => {
               <li>
                 <a 
                   href="#insahethon" 
-                  className="block px-5 py-2.5 text-white text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="block px-2 sm:px-3 md:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   inSAHEthon
                 </a>
@@ -236,7 +233,7 @@ const AcademicHeader = () => {
               <li>
                 <a 
                   href="#journal" 
-                  className="block px-5 py-2.5 text-white text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="block px-2 sm:px-3 md:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   Journal Publication
                 </a>
@@ -244,7 +241,7 @@ const AcademicHeader = () => {
               <li>
                 <a 
                   href="#speakers" 
-                  className="block px-5 py-2.5 text-white text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="block px-2 sm:px-3 md:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   Speakers
                 </a>
@@ -252,7 +249,7 @@ const AcademicHeader = () => {
               <li>
                 <a 
                   href="#schedule" 
-                  className="block px-5 py-2.5 text-white text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="block px-2 sm:px-3 md:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   Schedule
                 </a>
@@ -260,7 +257,7 @@ const AcademicHeader = () => {
               <li>
                 <a 
                   href="#download" 
-                  className="block px-5 py-2.5 text-white text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="block px-2 sm:px-3 md:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   Download
                 </a>
@@ -268,7 +265,7 @@ const AcademicHeader = () => {
               <li>
                 <a 
                   href="#contact" 
-                  className="block px-5 py-2.5 text-white text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  className="block px-2 sm:px-3 md:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
                 >
                   Contact us
                 </a>
@@ -279,19 +276,19 @@ const AcademicHeader = () => {
       </header>
 
       <style jsx>{`
-        /* Slide Animation for Banner - Seamless Loop */
+        /* Slide Animation for Banner - Single Statement Continuous */
         @keyframes slide {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(-100%);
           }
         }
         
         .animate-slide {
-          animation: slide 20s linear infinite;
-          display: inline-flex;
+          animation: slide 15s linear infinite;
+          display: inline-block;
         }
 
         /* Golden Background with Bokeh Effect */
@@ -479,11 +476,17 @@ const AcademicHeader = () => {
         
         @media (max-width: 768px) {
           .animate-slide {
-            animation: slide 15s linear infinite;
+            animation: slide 12s linear infinite;
           }
           
           .siddhartha-heading {
-            font-size: 2rem;
+            font-size: 1.75rem;
+          }
+        }
+        
+        @media (max-width: 640px) {
+          .animate-slide {
+            animation: slide 10s linear infinite;
           }
         }
       `}</style>
