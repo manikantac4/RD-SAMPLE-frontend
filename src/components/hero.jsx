@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import handImg from "./assets/hand.png";
+import handImg from "../assets/hand.png";
 
 const CodeFusionHero = () => {
   const canvasRef = useRef(null);
@@ -7,10 +7,13 @@ const CodeFusionHero = () => {
   /* ================= BACKGROUND PARTICLES ================= */
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
     let animationId;
     const dpr = window.devicePixelRatio || 1;
-
     const particles = [];
     const COUNT = 140;
 
@@ -50,7 +53,9 @@ const CodeFusionHero = () => {
     const init = () => {
       resize();
       particles.length = 0;
-      for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+      for (let i = 0; i < COUNT; i++) {
+        particles.push(new Particle());
+      }
     };
 
     const animate = () => {
@@ -64,6 +69,7 @@ const CodeFusionHero = () => {
 
     init();
     animate();
+
     window.addEventListener("resize", init);
     return () => {
       cancelAnimationFrame(animationId);
@@ -78,10 +84,11 @@ const CodeFusionHero = () => {
     return (
       <div
         className={`
-          absolute top-[45%] -translate-y-1/2
+          absolute top-1/2 -translate-y-1/2
           ${isLeft ? "left-[-6vw]" : "right-[-6vw]"}
           w-[34vw] max-w-[520px]
           opacity-80 hidden md:block
+          z-10
         `}
       >
         <img
@@ -107,15 +114,20 @@ const CodeFusionHero = () => {
   };
 
   return (
-    <section className="relative w-full h-screen bg-white overflow-hidden flex items-center justify-center font-serif">
-      {/* Background particles */}
-      <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
+    <section className="relative w-full h-[70vh] bg-white overflow-hidden flex items-center justify-center font-serif">
 
-      {/* Soft center highlight */}
-      <div className="absolute w-[520px] h-[260px] bg-[#f2f2f2] blur-3xl opacity-70" />
+      {/* CANVAS BACKGROUND */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 z-0"
+      />
 
-      {/* CONTENT */}
-      <div className="relative z-10 text-center px-6 animate-fadeIn">
+      {/* HAND IMAGES */}
+      <ImageHand side="left" />
+      <ImageHand side="right" />
+
+      {/* CENTER CONTENT */}
+      <div className="relative z-20 text-center px-6 animate-fadeIn">
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#1f1f1f]">
           CODEFUSION
         </h1>
@@ -131,15 +143,8 @@ const CodeFusionHero = () => {
         </p>
       </div>
 
-      {/* HANDS */}
-      <ImageHand side="left" />
-      <ImageHand side="right" />
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-[#f5f5f5] to-transparent" />
-
-      {/* ANIMATIONS */}
-      <style jsx>{`
+      {/* FADE ANIMATION */}
+      <style>{`
         .animate-fadeIn {
           animation: fadeIn 1.6s ease forwards;
         }
@@ -155,6 +160,7 @@ const CodeFusionHero = () => {
           }
         }
       `}</style>
+
     </section>
   );
 };
