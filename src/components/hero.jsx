@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import handImg from "../assets/hand.png";
 
 const CodeFusionHero = () => {
   const canvasRef = useRef(null);
@@ -15,35 +14,29 @@ const CodeFusionHero = () => {
     let animationId;
     const dpr = window.devicePixelRatio || 1;
     const particles = [];
-    const COUNT = 140;
+    const COUNT = 60;
 
     const resize = () => {
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
-      canvas.style.width = "100%";
-      canvas.style.height = "100%";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.scale(dpr, dpr);
     };
 
     class Particle {
-      constructor() {
-        this.reset();
-      }
+      constructor() { this.reset(); }
       reset() {
         this.x = Math.random() * window.innerWidth;
         this.y = Math.random() * window.innerHeight;
-        this.r = Math.random() * 1.2 + 0.6;
-        this.vy = Math.random() * 0.25 + 0.05;
-        this.vx = Math.random() * 0.1 - 0.05;
+        this.r = Math.random() * 2 + 0.5;
+        this.vy = Math.random() * 0.15 + 0.05;
         this.a = Math.random() * 0.2 + 0.05;
       }
       update() {
         this.y -= this.vy;
-        this.x += this.vx;
-        if (this.y < -20) this.y = window.innerHeight + 20;
+        if (this.y < -10) this.y = window.innerHeight + 10;
       }
       draw() {
-        ctx.fillStyle = `rgba(150,150,150,${this.a})`;
+        ctx.fillStyle = `rgba(12, 74, 110, ${this.a})`; // Deep sea blue particles
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
         ctx.fill();
@@ -53,23 +46,17 @@ const CodeFusionHero = () => {
     const init = () => {
       resize();
       particles.length = 0;
-      for (let i = 0; i < COUNT; i++) {
-        particles.push(new Particle());
-      }
+      for (let i = 0; i < COUNT; i++) particles.push(new Particle());
     };
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      particles.forEach(p => { p.update(); p.draw(); });
       animationId = requestAnimationFrame(animate);
     };
 
     init();
     animate();
-
     window.addEventListener("resize", init);
     return () => {
       cancelAnimationFrame(animationId);
@@ -77,90 +64,114 @@ const CodeFusionHero = () => {
     };
   }, []);
 
-  /* ================= IMAGE HAND ================= */
-  const ImageHand = ({ side }) => {
-    const isLeft = side === "left";
-
-    return (
-      <div
-        className={`
-          absolute top-1/2 -translate-y-1/2
-          ${isLeft ? "left-[-6vw]" : "right-[-6vw]"}
-          w-[34vw] max-w-[520px]
-          opacity-80 hidden md:block
-          z-10
-        `}
-      >
-        <img
-          src={handImg}
-          alt="Particle Hand"
-          className={`w-full h-auto ${!isLeft ? "scale-x-[-1]" : ""}`}
-        />
-
-        {/* Fingertip glow */}
-        <div
-          className={`
-            absolute top-[38%]
-            ${isLeft ? "right-[6%]" : "left-[6%]"}
-            w-4 h-4
-            bg-violet-500
-            rounded-full
-            blur-md
-            animate-pulse
-          `}
-        />
-      </div>
-    );
-  };
+  const title = "CODEFUSION";
 
   return (
-    <section className="relative w-full h-[70vh] bg-white overflow-hidden flex items-center justify-center font-serif">
+    <section className="relative w-full h-[60vh] bg-white overflow-hidden flex flex-col items-center justify-center font-serif">
+      
+      {/* CLEAN BACKGROUND PARTICLES */}
+      <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-40" />
 
-      {/* CANVAS BACKGROUND */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0"
-      />
+      {/* DARK SEA BLUE TITLE */}
+      <h1 className="relative z-10 flex dark-blue-title text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black">
+        {title.split("").map((char, i) => (
+          <span
+            key={i}
+            className="blue-letter"
+            style={{ animationDelay: `${i * 0.15}s` }} // Slower staggered entrance
+          >
+            {char}
+          </span>
+        ))}
+      </h1>
 
-      {/* HAND IMAGES */}
-      <ImageHand side="left" />
-      <ImageHand side="right" />
+      {/* ANIMATED DATE - SLOWER FADE */}
+      <p className="relative z-10 mt-10 text-lg md:text-xl tracking-[0.4em] uppercase text-[#0c4a6e] animate-fade-in-long" 
+         style={{ animationDelay: '2s' }}>
+        January 23–24, 2026
+      </p>
 
-      {/* CENTER CONTENT */}
-      <div className="relative z-20 text-center px-6 animate-fadeIn">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#1f1f1f]">
-          CODEFUSION
-        </h1>
+      {/* ANIMATED DIVIDER - SLOWER GROW */}
+      <div className="relative z-10 h-px bg-[#0ea5e9] mt-6 opacity-30 animate-grow-width-long" 
+           style={{ animationDelay: '2.5s' }} />
 
-        <p className="mt-4 text-lg md:text-xl tracking-[0.28em] uppercase text-[#5f5f5f]">
-          January 23–24, 2026
-        </p>
+      {/* ANIMATED TAGLINE - SLOWER REVEAL */}
+      <p className="relative z-10 mt-6 text-xs md:text-sm italic tracking-[0.3em] text-[#334155] animate-reveal-text-long"
+         style={{ animationDelay: '3s' }}>
+        Innovation with Discipline • Academic Hackathon
+      </p>
 
-        <div className="h-px w-24 bg-[#9a9a9a] mx-auto mt-6 opacity-60" />
-
-        <p className="mt-4 text-xs md:text-sm italic tracking-widest text-[#7a7a7a]">
-          Innovation with Discipline • Academic Hackathon
-        </p>
-      </div>
-
-      {/* FADE ANIMATION */}
       <style>{`
-        .animate-fadeIn {
-          animation: fadeIn 1.6s ease forwards;
+        .dark-blue-title { perspective: 1500px; }
+
+        .blue-letter {
+          position: relative;
+          display: inline-block;
+          margin: 0 0.05em;
+          opacity: 0;
+          transform: translateY(60px) rotateX(-90deg);
+          filter: blur(10px);
+          animation: 
+            heavyRise 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards,
+            liquidFlow 8s ease-in-out infinite;
+          
+          /* ✨ DEEP SEA BLUE GRADIENT */
+          background: linear-gradient(
+            to bottom,
+            #0ea5e9 0%,   /* Bright surface blue */
+            #0c4a6e 50%,  /* Deep sea blue */
+            #082f49 100%  /* Midnight blue base */
+          );
+          background-size: 100% 200%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+
+          /* Subtle 3D Depth for white background */
+          text-shadow: 0 10px 20px rgba(12, 74, 110, 0.15);
         }
 
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
+        /* INCREASED ANIMATION TRANSITIONS */
+        @keyframes heavyRise {
+          to { 
+            opacity: 1; 
+            transform: translateY(0) rotateX(0deg); 
+            filter: blur(0);
           }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        }
+
+        @keyframes liquidFlow {
+          0%, 100% { background-position: 50% 0%; }
+          50% { background-position: 50% 100%; }
+        }
+
+        .animate-fade-in-long {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: slowFade 2s ease-out forwards;
+        }
+
+        .animate-grow-width-long {
+          width: 0;
+          animation: slowGrow 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        .animate-reveal-text-long {
+          opacity: 0;
+          animation: slowReveal 2.5s ease-out forwards;
+        }
+
+        @keyframes slowFade {
+          to { opacity: 0.8; transform: translateY(0); }
+        }
+
+        @keyframes slowGrow {
+          to { width: 200px; }
+        }
+
+        @keyframes slowReveal {
+          to { opacity: 0.6; }
         }
       `}</style>
-
     </section>
   );
 };
