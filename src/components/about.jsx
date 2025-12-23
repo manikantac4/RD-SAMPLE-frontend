@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Users, DollarSign, Coffee, MapPin } from 'lucide-react';
 
 const EventRegistration = () => {
+  const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [prevTime, setPrevTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -30,6 +32,10 @@ const EventRegistration = () => {
 
     return () => clearInterval(timer);
   }, [timeLeft]);
+
+    const handleRegisterClick = () => {
+    navigate('/register');
+  };
 
   const CountdownUnit = ({ value, prevValue, label }) => {
     const hasChanged = value !== prevValue;
@@ -87,7 +93,11 @@ const EventRegistration = () => {
         {/* Register Button */}
         <div className="evt-button-wrapper">
           <div className="evt-button-container">
-            <button className="evt-register-button" style={serifStyle}>
+            <button 
+              onClick={handleRegisterClick}
+              className="evt-register-button" 
+              style={serifStyle}
+            >
               <span className="evt-button-shine"></span>
               <span className="evt-button-text">Register Now</span>
               <div className="evt-button-glow"></div>
