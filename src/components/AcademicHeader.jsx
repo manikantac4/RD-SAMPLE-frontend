@@ -141,7 +141,7 @@ const AcademicHeader = () => {
       </header>
 
       {/* STICKY Navigation Bar - Fixed on scroll */}
-      <nav className={`sticky top-0 z-50 transition-all duration-300 mt-6 ${
+      <nav className={`${isScrolled ? 'fixed top-0 left-0 right-0' : 'sticky top-0'} z-50 transition-all duration-300 ${isScrolled ? '' : 'mt-6'} ${
         isScrolled ? 'shadow-xl backdrop-blur-md bg-white/95' : 'bg-transparent'
       }`}>
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5">
