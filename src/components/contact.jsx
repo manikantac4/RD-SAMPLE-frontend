@@ -13,7 +13,7 @@ const ResponsiveAcademicContact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
           
           {/* LEFT COLUMN: Height-matched to Form */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
@@ -22,18 +22,18 @@ const ResponsiveAcademicContact = () => {
           >
             <div className="space-y-6">
               {/* Responsive Heading: Small on mobile, 42px on large desktop */}
-              <h2 
+              <h2
                 style={serifStyle}
                 className="text-3xl md:text-4xl lg:text-[42px] font-semibold text-[#0B3C5D] leading-tight"
               >
                 Get in Touch
               </h2>
               
-              <p 
+              <p
                 style={serifStyle}
                 className="text-base md:text-lg lg:text-[18px] text-[#6B7280] max-w-[450px] leading-relaxed italic"
               >
-                Reach out for queries, academic collaborations, or event-related information. 
+                Reach out for queries, academic collaborations, or event-related information.
                 Our team typically responds within two business days.
               </p>
               
@@ -42,8 +42,8 @@ const ResponsiveAcademicContact = () => {
                   <div className="text-[#0B3C5D] group-hover:text-[#D97706] transition-colors">
                     <Mail size={22} />
                   </div>
-                  <a 
-                    href="mailto:contact@university.edu" 
+                  <a
+                    href="mailto:contact@university.edu"
                     style={serifStyle}
                     className="text-lg md:text-xl text-[#6B7280] group-hover:text-[#0B3C5D] transition-colors underline underline-offset-4"
                   >
@@ -79,7 +79,7 @@ const ResponsiveAcademicContact = () => {
           </motion.div>
 
           {/* RIGHT COLUMN: Contact Form */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
@@ -93,8 +93,8 @@ const ResponsiveAcademicContact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label style={serifStyle} className="text-sm md:text-base font-bold text-[#0B3C5D]">First Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       style={serifStyle}
                       className="h-[46px] px-4 border border-[#6B7280] rounded-[4px] focus:border-[#0B3C5D] focus:ring-1 focus:ring-[#0B3C5D] outline-none transition-all text-base"
                       placeholder="Jane"
@@ -102,8 +102,8 @@ const ResponsiveAcademicContact = () => {
                   </div>
                   <div className="flex flex-col gap-2">
                     <label style={serifStyle} className="text-sm md:text-base font-bold text-[#0B3C5D]">Last Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       style={serifStyle}
                       className="h-[46px] px-4 border border-[#6B7280] rounded-[4px] focus:border-[#0B3C5D] focus:ring-1 focus:ring-[#0B3C5D] outline-none transition-all text-base"
                       placeholder="Smith"
@@ -113,8 +113,8 @@ const ResponsiveAcademicContact = () => {
 
                 <div className="flex flex-col gap-2">
                   <label style={serifStyle} className="text-sm md:text-base font-bold text-[#0B3C5D]">Email Address</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     style={serifStyle}
                     className="h-[46px] px-4 border border-[#6B7280] rounded-[4px] focus:border-[#0B3C5D] focus:ring-1 focus:ring-[#0B3C5D] outline-none transition-all text-base"
                     placeholder="j.smith@institution.edu"
@@ -123,7 +123,7 @@ const ResponsiveAcademicContact = () => {
 
                 <div className="flex flex-col gap-2">
                   <label style={serifStyle} className="text-sm md:text-base font-bold text-[#0B3C5D]">Message / Inquiry</label>
-                  <textarea 
+                  <textarea
                     rows={5}
                     style={serifStyle}
                     className="min-h-[120px] md:min-h-[150px] p-4 border border-[#6B7280] rounded-[4px] focus:border-[#0B3C5D] focus:ring-1 focus:ring-[#0B3C5D] outline-none transition-all resize-none text-base"
