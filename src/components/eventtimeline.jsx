@@ -39,7 +39,7 @@ z-index: 50;
 {/* Section Header */}
 <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
 <h2 className="text-4xl md:text-5xl font-bold text-[#0B3C5D] mb-3">
-Event Roadmap
+Event Schedule
 </h2>
 <div className="w-24 h-1 bg-[#0B3C5D] mx-auto mb-4"></div>
 <p className="text-[#4A6FA5] tracking-[0.2em] uppercase text-[10px] md:text-xs font-semibold">
@@ -81,13 +81,13 @@ ${isTop
 : 'border-b-[8px] border-b-[#0B3C5D] -top-[8px] arrow-up'}`} 
 />
 
-<div className="flex items-center gap-2 mb-2 border-b border-[#0B3C5D]/10 pb-2">
-<Icon size={16} className="text-[#0B3C5D] shrink-0" strokeWidth={2} />
-<h3 className="text-[#0B3C5D] font-bold text-[11px] uppercase leading-tight">
+<div className="flex items-center gap-2 mb-2 border-b border-[#0B3C5D]/10 pb-2 hover:cursor-pointer" >
+<Icon size={18} className="text-[#0B3C5D] shrink-0" strokeWidth={2} />
+<h3 className="text-[#0B3C5D] font-bold text-sm uppercase leading-tight">
 {item.title}
 </h3>
 </div>
-<p className="text-[#4A6FA5] text-[11px] leading-snug">
+<p className="text-[#4A6FA5] text-sm leading-snug">
 {item.desc}
 </p>
 </div>

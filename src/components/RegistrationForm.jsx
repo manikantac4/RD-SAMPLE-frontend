@@ -35,6 +35,7 @@ const RegistrationForm = () => {
       [name]: value
     }));
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

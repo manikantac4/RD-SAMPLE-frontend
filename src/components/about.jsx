@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Users, DollarSign, Coffee, MapPin } from 'lucide-react';
-
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useAsyncValue } from 'react-router-dom';
 const EventRegistration = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
+  const navigate = useNavigate();
   const serifStyle = { fontFamily: '"Times New Roman", Times, serif' };
+
+  const handleRegisterClick = (e) => {
+    navigate("/register");
+  }
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -77,6 +81,7 @@ const EventRegistration = () => {
             <button 
               className="evt-register-button" 
               style={serifStyle}
+              onClick={handleRegisterClick}
             >
               <span className="evt-button-shine"></span>
               <span className="evt-button-text">Register Now</span>
