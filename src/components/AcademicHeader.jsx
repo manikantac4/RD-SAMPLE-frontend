@@ -4,12 +4,9 @@ import SpringerLogo from '../assets/srpinger.webp';
 import RDLogo from '../assets/rdlogo.webp';
 import GoldenLogo from '../assets/golden.png';
 import Herosection from "../components/hero";
-<<<<<<< HEAD
 import Aboutsection from "../components/about";
 import Eventtimeline from "../components/eventtimeline";
-=======
 
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
 const AcademicHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -41,13 +38,8 @@ const AcademicHeader = () => {
 
   return (
     <div className="w-full">
-<<<<<<< HEAD
-      {/* Golden Jubilee Animated Banner */}
-      <div className="relative py-2 sm:py-3 overflow-hidden border-b-2 border-yellow-600 golden-banner">
-=======
-      {/* Golden Jubilee Animated Banner - Reduced Height */}
+      {/* Golden Jubilee Animated Banner - Fixed duplicate divs */}
       <div className="relative py-1 overflow-hidden border-b border-yellow-600 golden-banner">
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
         <div className="absolute inset-0 overflow-hidden">
           <div className="bokeh bokeh-1"></div>
           <div className="bokeh bokeh-2"></div>
@@ -56,34 +48,15 @@ const AcademicHeader = () => {
         </div>
         
         <div className="relative z-10 overflow-hidden">
-<<<<<<< HEAD
-          <div className="whitespace-nowrap text-center px-4">
-            <span className="text-xs sm:text-sm md:text-base font-bold tracking-wide text-red-700 sparkle-text">
-=======
           <div className="whitespace-nowrap text-center">
             <span className="text-xs font-bold tracking-wide text-red-700 sparkle-text">
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
               Golden Jubilee Year of Siddhartha Academy of General & Technical Education, Vijayawada
             </span>
           </div>
         </div>
       </div>
 
-<<<<<<< HEAD
-      {/* Main Header - Non-Fixed */}
-      <header className="bg-white shadow-md">
-        {/* Main Branding Section */}
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5">
-          <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4 md:gap-6">
-            
-            {/* LEFT: VRS Logo + 50 Years Logo */}
-            <div className="flex justify-center md:justify-start items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
-              <img 
-                src={Logo}
-                alt="V.R. Siddhartha Academy Logo" 
-                className="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-auto object-contain"
-=======
-      {/* Main Header - Reduced Padding and Logo Sizes */}
+      {/* Main Header - Fixed duplicate header tags */}
       <header 
         className={`bg-white transition-all duration-300 sticky top-0 z-50 ${
           isScrolled ? 'shadow-lg' : ''
@@ -99,127 +72,50 @@ const AcademicHeader = () => {
                 src={Logo}
                 alt="V.R. Siddhartha Academy Logo" 
                 className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain"
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                 onError={(e) => {
                   e.target.style.display = 'none';
                 }}
               />
-<<<<<<< HEAD
-              <img 
-                src={GoldenLogo}
-                alt="50 Years Golden Jubilee" 
-                className="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-auto object-contain"
-=======
-
               <img 
                 src={GoldenLogo}
                 alt="50 Years Golden Jubilee" 
                 className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain"
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
-<<<<<<< HEAD
-              {/* Fallback */}
-              <div className="hidden bg-gradient-to-br from-yellow-400 to-amber-600 h-16 sm:h-20 md:h-24 lg:h-28 w-16 sm:w-20 md:w-24 lg:w-28 rounded-full items-center justify-center shadow-lg">
-                <div className="text-center">
-                  <span className="text-white font-black text-xl sm:text-2xl md:text-3xl block leading-none">50</span>
-                  <span className="text-white text-[10px] sm:text-xs md:text-sm font-bold">YEARS</span>
-=======
               {/* Fallback if Golden Logo not found */}
               <div className="hidden bg-gradient-to-br from-yellow-400 to-amber-600 h-12 sm:h-14 md:h-16 lg:h-20 w-12 sm:w-14 md:w-16 lg:w-20 rounded-full items-center justify-center shadow-lg">
                 <div className="text-center">
                   <span className="text-white font-black text-lg sm:text-xl block leading-none">50</span>
                   <span className="text-white text-[8px] sm:text-[9px] font-bold">YEARS</span>
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                 </div>
               </div>
             </div>
 
-<<<<<<< HEAD
-            {/* CENTER: Title */}
-            <div className="flex flex-col items-center text-center">
-              <div className="inline-block">
-                <h1 className="font-serif font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-wider leading-none text-[#0b2c6f]">
-                  SIDDHARTHA
-                </h1>
-                <div className="h-[2px] md:h-[3px] bg-[#0b2c6f] w-full mt-1"></div>
-              </div>
-              <p className="font-serif text-[11px] sm:text-xs md:text-sm lg:text-base xl:text-lg font-bold tracking-wider text-black mt-2">
-                ACADEMY OF HIGHER EDUCATION
-              </p>
-              <p className="font-serif text-[10px] sm:text-xs md:text-sm lg:text-base text-black mt-1">
-                An Institution <span className="font-bold uppercase">Deemed to be University</span>
-              </p>
-              <p className="font-serif text-[9px] sm:text-[10px] md:text-xs lg:text-sm text-black mt-0.5">
-                (Under Section 3 of UGC Act, 1956)
-              </p>
-              <p className="font-serif text-[8px] sm:text-[9px] md:text-[11px] lg:text-xs text-black mt-0.5 px-2">
-                (Sponsored by Siddhartha Academy of General & Technical Education), Vijayawada, A.P
-              </p>
-            </div>
-
-            {/* RIGHT: RD Conclave + Springer Logos */}
-            <div className="flex justify-center md:justify-end items-center gap-3 sm:gap-4">
-              <div className="block">
-                <img 
-                  src={RDLogo}
-                  alt="Research Conclave" 
-                  className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto object-contain"
-=======
             {/* CENTER DIV: Title - More Compact */}
             <div className="flex flex-col items-center text-center">
               <div className="inline-block">
-                <h1 className="
-                  font-serif
-                  font-extrabold
-                  text-[20px] sm:text-[26px] md:text-[32px] lg:text-[38px]
-                  tracking-[0.06em]
-                  leading-none
-                  text-[#0b2c6f]
-                ">
+                <h1 className="font-serif font-extrabold text-[20px] sm:text-[26px] md:text-[32px] lg:text-[38px] tracking-[0.06em] leading-none text-[#0b2c6f]">
                   SIDDHARTHA
                 </h1>
                 <div className="h-[1.5px] md:h-[2px] bg-[#0b2c6f] w-full mt-[1px] md:mt-[2px]"></div>
               </div>
 
-              <p className="
-                font-serif
-                text-[10px] sm:text-[11px] md:text-[13px] lg:text-[14px]
-                font-bold
-                tracking-[0.05em]
-                text-black
-                mt-1
-              ">
+              <p className="font-serif text-[10px] sm:text-[11px] md:text-[13px] lg:text-[14px] font-bold tracking-[0.05em] text-black mt-1">
                 ACADEMY OF HIGHER EDUCATION
               </p>
 
-              <p className="
-                font-serif
-                text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px]
-                text-black
-                mt-0.5
-              ">
+              <p className="font-serif text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] text-black mt-0.5">
                 An Institution <span className="font-bold uppercase">Deemed to be University</span>
               </p>
 
-              <p className="
-                font-serif
-                text-[8px] sm:text-[9px] md:text-[10px]
-                text-black
-                mt-0.5
-              ">
+              <p className="font-serif text-[8px] sm:text-[9px] md:text-[10px] text-black mt-0.5">
                 (Under Section 3 of UGC Act, 1956)
               </p>
 
-              <p className="
-                font-serif
-                text-[7px] sm:text-[8px] md:text-[9px]
-                text-black
-                mt-0.5
-              ">
+              <p className="font-serif text-[7px] sm:text-[8px] md:text-[9px] text-black mt-0.5">
                 (Sponsored by Siddhartha Academy), Vijayawada, A.P
               </p>
             </div>
@@ -232,7 +128,6 @@ const AcademicHeader = () => {
                   src={RDLogo}
                   alt="Research Conclave" 
                   className="h-20 sm:h-24 md:h-28 w-auto object-contain"
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                   onError={(e) => {
                     e.target.style.display = 'none';
                   }}
@@ -242,11 +137,7 @@ const AcademicHeader = () => {
                 <img 
                   src={SpringerLogo}
                   alt="Springer" 
-<<<<<<< HEAD
-                  className="h-28 lg:h-32 xl:h-36 w-auto object-contain"
-=======
                   className="h-20 sm:h-24 md:h-28 w-auto object-contain"
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                   onError={(e) => {
                     e.target.style.display = 'none';
                   }}
@@ -357,7 +248,7 @@ const AcademicHeader = () => {
           </div>
 
           {/* Mobile Navigation - Hamburger */}
-          <div className="lg:hidden flex items-center justify-between">
+          <div className="md:hidden flex items-center justify-between">
             <div className="flex items-center gap-4">
               {/* Home Icon Mobile */}
               <a 
@@ -394,10 +285,9 @@ const AcademicHeader = () => {
           </div>
         </div>
 
-<<<<<<< HEAD
         {/* Mobile Side Navigation */}
         <div className={`
-          lg:hidden fixed top-0 right-0 h-full w-72 bg-[#1a1a1a] shadow-2xl transform transition-transform duration-300 ease-in-out z-50
+          md:hidden fixed top-0 right-0 h-full w-72 bg-[#1a1a1a] shadow-2xl transform transition-transform duration-300 ease-in-out z-50
           ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
         `}>
           {/* Mobile Menu Header */}
@@ -459,7 +349,7 @@ const AcademicHeader = () => {
         {/* Mobile Overlay */}
         {isMobileMenuOpen && (
           <div
-            className="lg:hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"
+            className="md:hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"
             onClick={() => setIsMobileMenuOpen(false)}
           ></div>
         )}
@@ -471,28 +361,6 @@ const AcademicHeader = () => {
 
       <style>{`
         /* Golden Background with Bokeh Effect */
-=======
-        {/* Navigation Bar - More Compact */}
-        <nav className="bg-[#1a2b4a] border-t border-gray-700">
-          <div className="container mx-auto px-2 sm:px-4 md:px-6">
-            <ul className="flex flex-wrap items-center justify-center gap-0.5">
-              {['Home', 'About', 'Industry-Academia Meet', 'inSAHEthon', 'Journal Publication', 'Speakers', 'Schedule', 'Download', 'Contact us'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="block px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 text-white text-[10px] sm:text-xs font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </nav>
-      </header>
-
-      <style>{`
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
         .golden-banner {
           background: linear-gradient(135deg, 
             #f4d03f 0%, 
@@ -564,59 +432,11 @@ const AcademicHeader = () => {
           font-weight: 700;
           text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
-<<<<<<< HEAD
-
-        /* Subtle Sparkle Animation */
-        @keyframes text-sparkle {
-          0%, 100% {
-            opacity: 0;
-            transform: scale(0);
-          }
-          50% {
-            opacity: 0.8;
-            transform: scale(1);
-          }
-        }
-
-        .text-sparkle {
-          position: absolute;
-          width: 3px;
-          height: 3px;
-          background: radial-gradient(circle, #fff 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
-          border-radius: 50%;
-          box-shadow: 0 0 4px rgba(255,255,255,0.8);
-        }
-
-        .sparkle-1 {
-          top: 30%;
-          left: 20%;
-          animation: text-sparkle 3s ease-in-out infinite;
-        }
-
-        .sparkle-2 {
-          top: 60%;
-          left: 50%;
-          animation: text-sparkle 3.5s ease-in-out infinite 0.8s;
-        }
-
-        .sparkle-3 {
-          top: 35%;
-          left: 70%;
-          animation: text-sparkle 3.2s ease-in-out infinite 1.5s;
-        }
-
-        .sparkle-4 {
-          top: 55%;
-          left: 85%;
-          animation: text-sparkle 3.8s ease-in-out infinite 2.2s;
-        }
 
         /* Smooth scrolling */
         html {
           scroll-behavior: smooth;
         }
-=======
->>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
       `}</style>
     </div>
   );
