@@ -3,9 +3,6 @@ import Logo from '../assets/logo.webp';
 import SpringerLogo from '../assets/srpinger.webp';
 import RDLogo from '../assets/rdlogo.webp';
 import GoldenLogo from '../assets/golden.png';
-import Herosection from "../components/hero";
-import Aboutsection from "../components/about";
-import Eventtimeline from "../components/eventtimeline";
 
 const AcademicHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -355,9 +352,7 @@ const AcademicHeader = () => {
         )}
       </nav>
 
-      <Herosection/>
-      <Aboutsection/>
-      <Eventtimeline/>
+     
 
       <style>{`
         /* Golden Background with Bokeh Effect */
