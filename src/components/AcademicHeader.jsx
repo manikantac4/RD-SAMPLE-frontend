@@ -35,7 +35,7 @@ const AcademicHeader = () => {
 
   return (
     <div className="w-full">
-      {/* Golden Jubilee Animated Banner - Fixed duplicate divs */}
+      {/* Golden Jubilee Animated Banner */}
       <div className="relative py-1 overflow-hidden border-b border-yellow-600 golden-banner">
         <div className="absolute inset-0 overflow-hidden">
           <div className="bokeh bokeh-1"></div>
@@ -53,13 +53,13 @@ const AcademicHeader = () => {
         </div>
       </div>
 
-      {/* Main Header - Fixed duplicate header tags */}
+      {/* Main Header */}
       <header 
         className={`bg-white transition-all duration-300 sticky top-0 z-50 ${
           isScrolled ? 'shadow-lg' : ''
         }`}
       >
-        {/* Main Branding Section - More Compact */}
+        {/* Main Branding Section */}
         <div className="container mx-auto px-4 sm:px-6 py-2">
           <div className="grid grid-cols-3 items-center gap-3">
             
@@ -91,7 +91,7 @@ const AcademicHeader = () => {
               </div>
             </div>
 
-            {/* CENTER DIV: Title - More Compact */}
+            {/* CENTER DIV: Title */}
             <div className="flex flex-col items-center text-center">
               <div className="inline-block">
                 <h1 className="font-serif font-extrabold text-[20px] sm:text-[26px] md:text-[32px] lg:text-[38px] tracking-[0.06em] leading-none text-[#0b2c6f]">
@@ -119,7 +119,6 @@ const AcademicHeader = () => {
 
             {/* RIGHT DIV: RD Conclave + Springer Logos */}
             <div className="flex justify-end items-center gap-2">
-              {/* Research Conclave Logo */}
               <div className="hidden md:block">
                 <img 
                   src={RDLogo}
@@ -145,11 +144,11 @@ const AcademicHeader = () => {
         </div>
       </header>
 
-      {/* Professional Full-Width Navigation Bar - Sticky Position */}
-      <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'shadow-2xl' : 'shadow-lg'
+      {/* OPTIMIZED Professional Navigation Bar with increased top margin */}
+      <nav className={`sticky top-0 z-40 transition-all duration-300 mt-6 ${
+        isScrolled ? 'shadow-xl backdrop-blur-sm' : ''
       }`}>
-        <div className="bg-[#2a2a2a] px-4 sm:px-6 md:px-8 lg:px-12 py-3 sm:py-3.5">
+        <div className="bg-transparent px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5">
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center justify-center" style={{ gap: '1.5cm' }}>
             {/* Home Icon */}
@@ -160,7 +159,7 @@ const AcademicHeader = () => {
                 flex items-center justify-center w-11 h-11 xl:w-12 xl:h-12 rounded-full transition-all duration-300
                 ${activeSection === 'home' 
                   ? 'bg-white text-black shadow-lg' 
-                  : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                  : 'text-gray-400 hover:text-black hover:bg-white hover:shadow-lg'
                 }
               `}
             >
@@ -170,7 +169,7 @@ const AcademicHeader = () => {
             </a>
 
             {/* Navigation Items */}
-            {navItems.slice(1, -1).map((item) => (
+            {navItems.slice(1, 7).map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
@@ -179,22 +178,13 @@ const AcademicHeader = () => {
                   px-5 xl:px-6 py-2.5 text-sm xl:text-base font-medium rounded-full transition-all duration-300 whitespace-nowrap
                   ${activeSection === item.id 
                     ? 'text-black bg-white shadow-lg scale-105' 
-                    : 'text-gray-300 hover:text-white hover:bg-gray-700 hover:scale-105'
+                    : 'text-gray-300 hover:text-black hover:bg-white hover:shadow-lg hover:scale-105'
                   }
                 `}
               >
                 {item.label}
               </a>
             ))}
-
-            {/* Contact Button */}
-            <a
-              href="#contact"
-              onClick={() => handleNavClick('contact')}
-              className="px-6 xl:px-8 py-2.5 text-sm xl:text-base font-medium text-black bg-white rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 whitespace-nowrap"
-            >
-              Contact Us
-            </a>
           </div>
 
           {/* Tablet Navigation (md to lg) */}
@@ -207,7 +197,7 @@ const AcademicHeader = () => {
                 flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
                 ${activeSection === 'home' 
                   ? 'bg-white text-black shadow-lg' 
-                  : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                  : 'text-gray-400 hover:text-black hover:bg-white hover:shadow-lg'
                 }
               `}
             >
@@ -226,7 +216,7 @@ const AcademicHeader = () => {
                   px-4 py-2 text-xs font-medium rounded-full transition-all duration-300 whitespace-nowrap
                   ${activeSection === item.id 
                     ? 'text-black bg-white shadow-lg' 
-                    : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                    : 'text-gray-300 hover:text-black hover:bg-white hover:shadow-lg'
                   }
                 `}
               >
@@ -238,7 +228,7 @@ const AcademicHeader = () => {
             <a
               href="#contact"
               onClick={() => handleNavClick('contact')}
-              className="px-5 py-2 text-xs font-medium text-black bg-white rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg whitespace-nowrap"
+              className="px-5 py-2 text-xs font-medium text-black bg-white rounded-full hover:bg-white hover:shadow-xl transition-all duration-300 shadow-lg whitespace-nowrap scale-100 hover:scale-105"
             >
               Contact Us
             </a>
@@ -255,7 +245,7 @@ const AcademicHeader = () => {
                   flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
                   ${activeSection === 'home' 
                     ? 'bg-white text-black shadow-lg' 
-                    : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                    : 'text-gray-400 hover:text-black hover:bg-white hover:shadow-lg'
                   }
                 `}
               >
@@ -267,7 +257,7 @@ const AcademicHeader = () => {
             </div>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex items-center justify-center w-10 h-10 bg-white rounded-full text-black hover:bg-gray-100 transition-all duration-300"
+              className="flex items-center justify-center w-10 h-10 bg-white rounded-full text-black hover:bg-white hover:shadow-xl transition-all duration-300"
             >
               {isMobileMenuOpen ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -311,7 +301,7 @@ const AcademicHeader = () => {
                   flex items-center gap-3 px-5 py-3.5 rounded-xl text-sm font-medium transition-all duration-300
                   ${activeSection === item.id 
                     ? 'bg-white text-black' 
-                    : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                    : 'text-gray-300 hover:text-black hover:bg-white'
                   }
                 `}
               >
@@ -351,8 +341,6 @@ const AcademicHeader = () => {
           ></div>
         )}
       </nav>
-
-     
 
       <style>{`
         /* Golden Background with Bokeh Effect */
