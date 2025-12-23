@@ -5,13 +5,13 @@ Megaphone, CreditCard, Hourglass, Rocket
 } from 'lucide-react';
 
 const TimelineData = [
-{ id: "01", date: "DEC 25", title: "Registration Opens", icon: ClipboardCheck, desc: "Portal live for team details and problem statements." },
-{ id: "02", date: "JAN 08", title: "Registration Closes", icon: CalendarX, desc: "Final deadline; no late entries allowed." },
-{ id: "03", date: "JAN 09", title: "Shortlisting Round", icon: Filter, desc: "Technical evaluation by expert panels." },
-{ id: "04", date: "JAN 10", title: "Results Announcement", icon: Megaphone, desc: "Teams cleared for participation announced." },
-{ id: "05", date: "JAN 10", title: "Payment Window", icon: CreditCard, desc: "Fee submission enabled for shortlisted candidates." },
-{ id: "06", date: "JAN 13", title: "Payment Deadline", icon: Hourglass, desc: "Final cutoff to secure participation slots." },
-{ id: "07", date: "JAN 23–24", title: "Hackathon Kickoff", icon: Rocket, desc: "24-hour innovation sprint and technical demos." },
+{ date: "DEC 25", title: "Registration Opens", icon: ClipboardCheck, desc: "Portal live for team details and problem statements." },
+{ date: "JAN 08", title: "Registration Closes", icon: CalendarX, desc: "Final deadline; no late entries allowed." },
+{ date: "JAN 09", title: "Shortlisting Round", icon: Filter, desc: "Technical evaluation by expert panels." },
+{ date: "JAN 10", title: "Results Announcement", icon: Megaphone, desc: "Teams cleared for participation announced." },
+{ date: "JAN 10", title: "Payment Window", icon: CreditCard, desc: "Fee submission enabled for shortlisted candidates." },
+{ date: "JAN 13", title: "Payment Deadline", icon: Hourglass, desc: "Final cutoff to secure participation slots." },
+{ date: "JAN 23–24", title: "Hackathon Kickoff", icon: Rocket, desc: "24-hour innovation sprint and technical demos." },
 ];
 
 const HackathonTimeline = () => {
@@ -36,7 +36,7 @@ z-index: 50;
 .timeline-card:hover .arrow-up { border-bottom-color: #0B3C5D !important; }
 `}} />
 
-{/* Section Header - Reduced margin for better fit */}
+{/* Section Header */}
 <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
 <h2 className="text-4xl md:text-5xl font-bold text-[#0B3C5D] mb-3">
 Event Roadmap
@@ -61,16 +61,10 @@ const isTop = index % 2 === 0;
 const Icon = item.icon;
 
 return (
-<div key={item.id} className="relative flex flex-col items-center flex-1">
-{/* Date Label */}
-<div className={`absolute px-3 py-1 border border-[#4A6FA5] text-[#4A6FA5] text-[10px] font-bold rounded-full bg-white z-20 whitespace-nowrap
-${isTop ? 'bottom-12' : 'top-12'}`}>
+<div key={item.date + index} className="relative flex flex-col items-center flex-1">
+{/* Central Node with Date */}
+<div className="w-16 h-16 rounded-full border-2 border-[#0B3C5D] bg-white flex items-center justify-center text-[#0B3C5D] font-bold text-[10px] shadow-sm z-30 whitespace-nowrap px-2">
 {item.date}
-</div>
-
-{/* Central Node */}
-<div className="w-12 h-12 rounded-full border-2 border-[#0B3C5D] bg-white flex items-center justify-center text-[#0B3C5D] font-bold shadow-sm z-30">
-{item.id}
 </div>
 
 {/* Alternating Content Card */}
@@ -108,17 +102,14 @@ ${isTop
 {TimelineData.map((item, index) => {
 const Icon = item.icon;
 return (
-<div key={item.id} className="relative pl-16 group">
-{/* Numbered Node */}
-<div className="absolute left-1 top-2 w-10 h-10 rounded-full border-2 border-[#0B3C5D] bg-white z-10 flex items-center justify-center text-[#0B3C5D] font-bold text-sm">
-{item.id}
+<div key={item.date + index} className="relative pl-16 group">
+{/* Date Node */}
+<div className="absolute left-0 top-2 w-12 h-12 rounded-full border-2 border-[#0B3C5D] bg-white z-10 flex items-center justify-center text-[#0B3C5D] font-bold text-[9px] whitespace-nowrap px-1">
+{item.date}
 </div>
 {/* Content Box */}
 <div className="bg-white border border-gray-200 p-5 rounded-xl shadow-sm hover:border-[#0B3C5D] transition-all">
-<div className="flex items-center justify-between mb-2">
-<span className="text-[#4A6FA5] text-[10px] font-bold px-2 py-0.5 border border-[#4A6FA5] rounded-full">
-{item.date}
-</span>
+<div className="flex items-center justify-end mb-2">
 <Icon size={18} className="text-[#0B3C5D]" strokeWidth={1.5} />
 </div>
 <h3 className="text-[#0B3C5D] font-bold text-lg mb-1">{item.title}</h3>
