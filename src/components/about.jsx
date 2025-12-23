@@ -5,6 +5,8 @@ const EventRegistration = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [prevTime, setPrevTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
+  const serifStyle = { fontFamily: '"Times New Roman", Times, serif' };
+
   useEffect(() => {
     const calculateTimeLeft = () => {
       const targetDate = new Date('2026-01-23T00:00:00+05:30');
@@ -18,7 +20,6 @@ const EventRegistration = () => {
           minutes: Math.floor((difference / 1000 / 60) % 60),
           seconds: Math.floor((difference / 1000) % 60)
         };
-        
         setPrevTime(timeLeft);
         setTimeLeft(newTime);
       }
@@ -32,53 +33,51 @@ const EventRegistration = () => {
 
   const CountdownUnit = ({ value, prevValue, label }) => {
     const hasChanged = value !== prevValue;
-    
     return (
-      <div className="countdown-container">
-        <div className="countdown-box">
-          <div className="countdown-number">
-            <div className={`flip-card ${hasChanged ? 'flipping' : ''}`}>
-              <div className="flip-card-inner">
-                <div className="flip-card-front">
-                  <span>{String(prevValue).padStart(2, '0')}</span>
+      <div className="evt-countdown-container">
+        <div className="evt-countdown-box">
+          <div className="evt-countdown-number">
+            <div className={`evt-flip-card ${hasChanged ? 'evt-flipping' : ''}`}>
+              <div className="evt-flip-card-inner">
+                <div className="evt-flip-card-front">
+                  <span style={serifStyle}>{String(prevValue).padStart(2, '0')}</span>
                 </div>
-                <div className="flip-card-back">
-                  <span>{String(value).padStart(2, '0')}</span>
+                <div className="evt-flip-card-back">
+                  <span style={serifStyle}>{String(value).padStart(2, '0')}</span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="countdown-label">{label}</div>
+          <div className="evt-countdown-label" style={serifStyle}>{label}</div>
         </div>
       </div>
     );
   };
 
   const InfoCard = ({ icon: Icon, title, description }) => (
-    <div className="info-card">
-      <div className="card-content">
-        <div className="icon-wrapper">
-          <Icon className="card-icon" strokeWidth={2} />
+    <div className="evt-info-card">
+      <div className="evt-card-content">
+        <div className="evt-icon-wrapper">
+          <Icon className="evt-card-icon" strokeWidth={2} />
         </div>
-        <div className="card-text">
-          <h3 className="card-title">{title}</h3>
-          <p className="card-description">{description}</p>
+        <div className="evt-card-text">
+          <h3 className="evt-card-title" style={serifStyle}>{title}</h3>
+          <p className="evt-card-description" style={serifStyle}>{description}</p>
         </div>
       </div>
     </div>
   );
 
   return (
-    <div className="event-section">
-      <div className="container">
-        
+    <div className="evt-event-section" style={serifStyle}>
+      <div className="evt-container">
         {/* Header */}
-        <div className="header-section">
-          <h1 className="main-title">Event Starts In</h1>
+        <div className="evt-header-section">
+          <h1 className="evt-main-title" style={serifStyle}>Event Starts In</h1>
         </div>
 
         {/* Countdown Timer */}
-        <div className="countdown-wrapper">
+        <div className="evt-countdown-wrapper">
           <CountdownUnit value={timeLeft.days} prevValue={prevTime.days} label="Days" />
           <CountdownUnit value={timeLeft.hours} prevValue={prevTime.hours} label="Hours" />
           <CountdownUnit value={timeLeft.minutes} prevValue={prevTime.minutes} label="Minutes" />
@@ -86,18 +85,18 @@ const EventRegistration = () => {
         </div>
 
         {/* Register Button */}
-        <div className="button-wrapper">
-          <div className="button-container">
-            <button className="register-button">
-              <span className="button-shine"></span>
-              <span className="button-text">Register Now</span>
-              <div className="button-glow"></div>
+        <div className="evt-button-wrapper">
+          <div className="evt-button-container">
+            <button className="evt-register-button" style={serifStyle}>
+              <span className="evt-button-shine"></span>
+              <span className="evt-button-text">Register Now</span>
+              <div className="evt-button-glow"></div>
             </button>
           </div>
         </div>
 
         {/* Info Cards */}
-        <div className="cards-grid">
+        <div className="evt-cards-grid">
           <InfoCard 
             icon={Users}
             title="Team Size"
@@ -119,73 +118,66 @@ const EventRegistration = () => {
             description="Siddhartha Academy of Higher Education, Vijayawada"
           />
         </div>
-
       </div>
 
       <style jsx>{`
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
-        .event-section {
+        .evt-event-section {
           min-height: 100vh;
           background: #ffffff;
-          padding: 70px 20px;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          padding: 50px 20px;
+          font-family: 'Times New Roman', Times, serif;
         }
 
-        .container {
-          max-width: 1200px;
+        .evt-container {
+          max-width: 1100px;
           margin: 0 auto;
         }
 
-        .header-section {
+        .evt-header-section {
           text-align: center;
-          margin-bottom: 50px;
+          margin-bottom: 40px;
         }
 
-        .main-title {
-          font-size: 44px;
+        .evt-main-title {
+          font-size: 42px;
           font-weight: 700;
           color: #1a2b4a;
           letter-spacing: -0.5px;
         }
 
-        .countdown-wrapper {
+        .evt-countdown-wrapper {
           display: flex;
           justify-content: center;
-          gap: 24px;
-          margin-bottom: 60px;
+          gap: 16px;
+          margin-bottom: 45px;
           flex-wrap: wrap;
         }
 
-        .countdown-container {
+        .evt-countdown-container {
           perspective: 1000px;
         }
 
-        .countdown-box {
+        .evt-countdown-box {
           display: flex;
           flex-direction: column;
           align-items: center;
         }
 
-        .countdown-number {
+        .evt-countdown-number {
           position: relative;
-          width: 120px;
-          height: 120px;
-          margin-bottom: 16px;
+          width: 105px;
+          height: 105px;
+          margin-bottom: 12px;
         }
 
-        .flip-card {
+        .evt-flip-card {
           position: relative;
           width: 100%;
           height: 100%;
           transform-style: preserve-3d;
         }
 
-        .flip-card-inner {
+        .evt-flip-card-inner {
           position: relative;
           width: 100%;
           height: 100%;
@@ -193,127 +185,93 @@ const EventRegistration = () => {
           transform-origin: center;
         }
 
-        .flip-card.flipping .flip-card-inner {
-          animation: flipAnimation 0.6s ease-in-out;
+        .evt-flip-card.evt-flipping .evt-flip-card-inner {
+          animation: evt-flipAnimation 0.6s ease-in-out;
         }
 
-        @keyframes flipAnimation {
-          0% {
-            transform: rotateX(0deg);
-          }
-          50% {
-            transform: rotateX(90deg);
-          }
-          100% {
-            transform: rotateX(0deg);
-          }
+        @keyframes evt-flipAnimation {
+          0% { transform: rotateX(0deg); }
+          50% { transform: rotateX(90deg); }
+          100% { transform: rotateX(0deg); }
         }
 
-        .flip-card-front,
-        .flip-card-back {
+        .evt-flip-card-front,
+        .evt-flip-card-back {
           position: absolute;
           width: 100%;
           height: 100%;
           backface-visibility: hidden;
           background: #ffffff;
           border: 2px solid #e2e8f0;
-          border-radius: 16px;
+          border-radius: 14px;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 6px 16px rgba(26, 43, 74, 0.1);
+          box-shadow: 0 4px 12px rgba(26, 43, 74, 0.08);
         }
 
-        .flip-card-front {
-          transform: rotateX(0deg);
+        .evt-flip-card-front { transform: rotateX(0deg); }
+        .evt-flip-card-back { transform: rotateX(180deg); }
+
+        .evt-flip-card.evt-flipping .evt-flip-card-front { animation: evt-flipFront 0.6s ease-in-out; }
+        .evt-flip-card.evt-flipping .evt-flip-card-back { animation: evt-flipBack 0.6s ease-in-out; }
+
+        @keyframes evt-flipFront {
+          0% { transform: rotateX(0deg); opacity: 1; }
+          50% { transform: rotateX(90deg); opacity: 0; }
+          100% { transform: rotateX(90deg); opacity: 0; }
         }
 
-        .flip-card-back {
-          transform: rotateX(180deg);
+        @keyframes evt-flipBack {
+          0% { transform: rotateX(-90deg); opacity: 0; }
+          50% { transform: rotateX(-90deg); opacity: 0; }
+          100% { transform: rotateX(0deg); opacity: 1; }
         }
 
-        .flip-card.flipping .flip-card-front {
-          animation: flipFront 0.6s ease-in-out;
-        }
-
-        .flip-card.flipping .flip-card-back {
-          animation: flipBack 0.6s ease-in-out;
-        }
-
-        @keyframes flipFront {
-          0% {
-            transform: rotateX(0deg);
-            opacity: 1;
-          }
-          50% {
-            transform: rotateX(90deg);
-            opacity: 0;
-          }
-          100% {
-            transform: rotateX(90deg);
-            opacity: 0;
-          }
-        }
-
-        @keyframes flipBack {
-          0% {
-            transform: rotateX(-90deg);
-            opacity: 0;
-          }
-          50% {
-            transform: rotateX(-90deg);
-            opacity: 0;
-          }
-          100% {
-            transform: rotateX(0deg);
-            opacity: 1;
-          }
-        }
-
-        .flip-card-front span,
-        .flip-card-back span {
-          font-size: 52px;
+        .evt-flip-card-front span,
+        .evt-flip-card-back span {
+          font-size: 48px;
           font-weight: 700;
           color: #1a2b4a;
         }
 
-        .countdown-label {
-          font-size: 14px;
+        .evt-countdown-label {
+          font-size: 13px;
           font-weight: 600;
           letter-spacing: 0.8px;
           color: #64748b;
           text-transform: capitalize;
         }
 
-        .button-wrapper {
+        .evt-button-wrapper {
           display: flex;
           justify-content: center;
-          margin-bottom: 70px;
+          margin-bottom: 50px;
         }
 
-        .button-container {
+        .evt-button-container {
           position: relative;
         }
 
-        .register-button {
+        .evt-register-button {
           position: relative;
-          padding: 20px 64px;
-          font-size: 22px;
+          padding: 18px 56px;
+          font-size: 20px;
           font-weight: 700;
           color: #ffffff;
           background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 50%, #6b21a8 100%);
           border: none;
-          border-radius: 14px;
+          border-radius: 12px;
           cursor: pointer;
           overflow: hidden;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           box-shadow: 
-            0 10px 30px rgba(124, 58, 237, 0.35),
+            0 8px 24px rgba(124, 58, 237, 0.35),
             0 4px 12px rgba(124, 58, 237, 0.25),
             inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        .register-button::before {
+        .evt-register-button::before {
           content: '';
           position: absolute;
           top: 0;
@@ -324,26 +282,24 @@ const EventRegistration = () => {
           transition: left 0.6s ease;
         }
 
-        .register-button:hover::before {
-          left: 100%;
-        }
+        .evt-register-button:hover::before { left: 100%; }
 
-        .register-button:hover {
-          transform: translateY(-4px) scale(1.02);
+        .evt-register-button:hover {
+          transform: translateY(-3px) scale(1.02);
           box-shadow: 
-            0 16px 40px rgba(124, 58, 237, 0.45),
-            0 8px 20px rgba(124, 58, 237, 0.35),
+            0 14px 35px rgba(124, 58, 237, 0.45),
+            0 6px 18px rgba(124, 58, 237, 0.35),
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
-        .register-button:active {
-          transform: translateY(-2px) scale(1.01);
+        .evt-register-button:active {
+          transform: translateY(-1px) scale(1.01);
           box-shadow: 
-            0 8px 20px rgba(124, 58, 237, 0.4),
-            0 4px 12px rgba(124, 58, 237, 0.3);
+            0 6px 18px rgba(124, 58, 237, 0.4),
+            0 3px 10px rgba(124, 58, 237, 0.3);
         }
 
-        .button-shine {
+        .evt-button-shine {
           position: absolute;
           top: 0;
           left: -75%;
@@ -351,28 +307,24 @@ const EventRegistration = () => {
           height: 100%;
           background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
           transform: skewX(-25deg);
-          animation: shine 3s infinite;
+          animation: evt-shine 3s infinite;
         }
 
-        @keyframes shine {
-          0%, 100% {
-            left: -75%;
-          }
-          50% {
-            left: 125%;
-          }
+        @keyframes evt-shine {
+          0%, 100% { left: -75%; }
+          50% { left: 125%; }
         }
 
-        .button-text {
+        .evt-button-text {
           position: relative;
           z-index: 2;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .button-glow {
+        .evt-button-glow {
           position: absolute;
           inset: -2px;
-          border-radius: 14px;
+          border-radius: 12px;
           background: linear-gradient(135deg, #7c3aed, #6b21a8);
           opacity: 0;
           filter: blur(12px);
@@ -380,46 +332,44 @@ const EventRegistration = () => {
           transition: opacity 0.4s ease;
         }
 
-        .register-button:hover .button-glow {
-          opacity: 0.8;
-        }
+        .evt-register-button:hover .evt-button-glow { opacity: 0.8; }
 
-        .cards-grid {
+        .evt-cards-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 24px;
-          max-width: 1000px;
+          gap: 18px;
+          max-width: 950px;
           margin: 0 auto;
         }
 
-        .info-card {
+        .evt-info-card {
           background: #ffffff;
           border: 2px solid #e2e8f0;
-          border-radius: 20px;
-          padding: 32px 28px;
-          box-shadow: 0 4px 12px rgba(26, 43, 74, 0.06);
+          border-radius: 16px;
+          padding: 26px 24px;
+          box-shadow: 0 3px 10px rgba(26, 43, 74, 0.06);
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          min-height: 140px;
+          min-height: 125px;
         }
 
-        .info-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 16px 40px rgba(26, 43, 74, 0.14);
+        .evt-info-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 32px rgba(26, 43, 74, 0.12);
           border-color: #cbd5e1;
         }
 
-        .card-content {
+        .evt-card-content {
           display: flex;
           align-items: flex-start;
-          gap: 20px;
+          gap: 18px;
           height: 100%;
         }
 
-        .icon-wrapper {
+        .evt-icon-wrapper {
           flex-shrink: 0;
-          width: 56px;
-          height: 56px;
-          border-radius: 14px;
+          width: 52px;
+          height: 52px;
+          border-radius: 12px;
           background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
           display: flex;
           align-items: center;
@@ -427,111 +377,61 @@ const EventRegistration = () => {
           transition: all 0.3s ease;
         }
 
-        .info-card:hover .icon-wrapper {
+        .evt-info-card:hover .evt-icon-wrapper {
           background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
           transform: scale(1.08) rotate(5deg);
         }
 
-        .card-icon {
-          width: 26px;
-          height: 26px;
+        .evt-card-icon {
+          width: 24px;
+          height: 24px;
           color: #1a2b4a;
         }
 
-        .card-text {
+        .evt-card-text {
           flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: center;
         }
 
-        .card-title {
-          font-size: 18px;
+        .evt-card-title {
+          font-size: 17px;
           font-weight: 700;
           color: #1a2b4a;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
           line-height: 1.3;
         }
 
-        .card-description {
-          font-size: 15px;
+        .evt-card-description {
+          font-size: 14.5px;
           color: #64748b;
           line-height: 1.5;
           font-weight: 500;
         }
 
         @media (max-width: 768px) {
-          .main-title {
-            font-size: 34px;
-          }
-
-          .countdown-wrapper {
-            gap: 16px;
-          }
-
-          .countdown-number {
-            width: 95px;
-            height: 95px;
-          }
-
-          .flip-card-front span,
-          .flip-card-back span {
-            font-size: 42px;
-          }
-
-          .countdown-label {
-            font-size: 12px;
-          }
-
-          .register-button {
-            padding: 18px 48px;
-            font-size: 19px;
-          }
-
-          .cards-grid {
-            grid-template-columns: 1fr;
-            gap: 18px;
-          }
-
-          .info-card {
-            padding: 28px 24px;
-            min-height: 120px;
-          }
-
-          .icon-wrapper {
-            width: 52px;
-            height: 52px;
-          }
-
-          .card-icon {
-            width: 24px;
-            height: 24px;
-          }
+          .evt-main-title { font-size: 34px; }
+          .evt-countdown-wrapper { gap: 14px; margin-bottom: 40px; }
+          .evt-countdown-number { width: 90px; height: 90px; margin-bottom: 10px; }
+          .evt-flip-card-front span, .evt-flip-card-back span { font-size: 40px; }
+          .evt-countdown-label { font-size: 12px; }
+          .evt-register-button { padding: 16px 44px; font-size: 18px; }
+          .evt-button-wrapper { margin-bottom: 40px; }
+          .evt-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+          .evt-info-card { padding: 24px 20px; min-height: 115px; }
+          .evt-icon-wrapper { width: 48px; height: 48px; }
+          .evt-card-icon { width: 22px; height: 22px; }
         }
 
         @media (max-width: 480px) {
-          .event-section {
-            padding: 50px 16px;
-          }
-
-          .main-title {
-            font-size: 30px;
-          }
-
-          .countdown-number {
-            width: 80px;
-            height: 80px;
-          }
-
-          .flip-card-front span,
-          .flip-card-back span {
-            font-size: 36px;
-          }
-
-          .register-button {
-            padding: 16px 40px;
-            font-size: 17px;
-          }
+          .evt-event-section { padding: 40px 16px; }
+          .evt-header-section { margin-bottom: 35px; }
+          .evt-main-title { font-size: 30px; }
+          .evt-countdown-number { width: 80px; height: 80px; }
+          .evt-flip-card-front span, .evt-flip-card-back span { font-size: 36px; }
+          .evt-register-button { padding: 15px 38px; font-size: 17px; }
+          .evt-info-card { padding: 22px 18px; }
         }
       `}</style>
     </div>

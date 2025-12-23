@@ -72,7 +72,7 @@ const CodeFusionHero = () => {
   const title = "CODEFUSION";
 
   return (
-    <section className="relative w-full h-[60vh] bg-white overflow-hidden flex flex-col items-center justify-center font-serif">
+    <section className="relative w-full h-[70vh] bg-white overflow-hidden flex flex-col items-center justify-center font-serif">
 
       {/* BACKGROUND PARTICLES */}
       <canvas
@@ -107,19 +107,62 @@ const CodeFusionHero = () => {
         style={{ animationDelay: "2.4s" }}
       />
 
-      {/* TAGLINE */}
-      <p
-        className="relative z-20 mt-10 text-[11px] md:text-xs italic tracking-[0.18em] text-[#475569] animate-reveal-text-long"
-        style={{ animationDelay: "2.9s" }}
-      >
-        Innovation with Discipline • Academic Hackathon
-      </p>
+      {/* ORGANISER INFO */}
+{/* ORGANISER INFO */}
+<div
+  className="relative z-20 mt-[1cm] flex flex-col items-center text-[#475569] animate-org-wrapper"
+  style={{ fontFamily: "Times New Roman, serif" }}
+>
+  <p
+    className="text-sm md:text-base tracking-[0.18em] animate-org-line-1"
+    style={{ marginBottom: "0.5cm" }}
+  >
+    ORGANISED BY RESEARCH &amp; DEVELOPMENT CELL
+  </p>
+
+  <p
+    className="text-sm md:text-base tracking-[0.18em] animate-org-line-2"
+    style={{ marginBottom: "0.5cm" }}
+  >
+    DEPARTMENTS OF IT &amp; CSE
+  </p>
+</div>
+
+
 
       {/* STYLES */}
       <style>{`
         .dark-blue-title {
           perspective: 1500px;
         }
+        /* ===== ORGANISER TEXT ANIMATION ===== */
+
+.animate-org-wrapper {
+  overflow: hidden;
+}
+
+.animate-org-line-1,
+.animate-org-line-2 {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: orgReveal 1.6s ease-out forwards;
+}
+
+/* Staggered timing */
+.animate-org-line-1 {
+  animation-delay: 2.6s;
+}
+
+.animate-org-line-2 {
+  animation-delay: 3.0s;
+}
+
+@keyframes orgReveal {
+  to {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+}
 
         .blue-letter {
           position: relative;
