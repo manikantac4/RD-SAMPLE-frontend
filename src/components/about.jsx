@@ -1,72 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Users, DollarSign, Coffee, MapPin } from 'lucide-react';
 
 const EventRegistration = () => {
-  const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [prevTime, setPrevTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   const serifStyle = { fontFamily: '"Times New Roman", Times, serif' };
 
   useEffect(() => {
-  const calculateTimeLeft = () => {
-    const targetDate = new Date('2026-01-23T00:00:00+05:30');
-    const now = new Date();
-    const difference = targetDate - now;
+    const calculateTimeLeft = () => {
+      const targetDate = new Date('2026-01-23T00:00:00+05:30');
+      const now = new Date();
+      const difference = targetDate - now;
 
-    if (difference > 0) {
-      const newTime = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60)
-      };
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60)
+        });
+      }
+    };
 
-      // Use a functional update to set both states safely
-      setTimeLeft(prev => {
-        setPrevTime(prev); // Save the old state before updating to the new one
-        return newTime;
-      });
-    }
-  };
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
 
-  // Run once immediately on mount
-  calculateTimeLeft();
-  
-  // Set the interval
-  const timer = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
-  // Cleanup on unmount
-  return () => clearInterval(timer);
-}, []); // Empty array ensures this effect only runs ONCE on mount
-
-    const handleRegisterClick = () => {
-    navigate('/register');
-  };
-
-  const CountdownUnit = ({ value, prevValue, label }) => {
-    const hasChanged = value !== prevValue;
-    return (
-      <div className="evt-countdown-container">
-        <div className="evt-countdown-box">
-          <div className="evt-countdown-number">
-            <div className={`evt-flip-card ${hasChanged ? 'evt-flipping' : ''}`}>
-              <div className="evt-flip-card-inner">
-                <div className="evt-flip-card-front">
-                  <span style={serifStyle}>{String(prevValue).padStart(2, '0')}</span>
-                </div>
-                <div className="evt-flip-card-back">
-                  <span style={serifStyle}>{String(value).padStart(2, '0')}</span>
-                </div>
-              </div>
-            </div>
+  const CountdownUnit = ({ value, label }) => (
+    <div className="evt-countdown-container">
+      <div className="evt-countdown-box">
+        <div className="evt-countdown-number">
+          <div className="evt-countdown-display">
+            <span style={serifStyle}>{String(value).padStart(2, '0')}</span>
           </div>
-          <div className="evt-countdown-label" style={serifStyle}>{label}</div>
         </div>
+        <div className="evt-countdown-label" style={serifStyle}>{label}</div>
       </div>
-    );
-  };
+    </div>
+  );
 
   const InfoCard = ({ icon: Icon, title, description }) => (
     <div className="evt-info-card">
@@ -92,17 +65,16 @@ const EventRegistration = () => {
 
         {/* Countdown Timer */}
         <div className="evt-countdown-wrapper">
-          <CountdownUnit value={timeLeft.days} prevValue={prevTime.days} label="Days" />
-          <CountdownUnit value={timeLeft.hours} prevValue={prevTime.hours} label="Hours" />
-          <CountdownUnit value={timeLeft.minutes} prevValue={prevTime.minutes} label="Minutes" />
-          <CountdownUnit value={timeLeft.seconds} prevValue={prevTime.seconds} label="Seconds" />
+          <CountdownUnit value={timeLeft.days} label="Days" />
+          <CountdownUnit value={timeLeft.hours} label="Hours" />
+          <CountdownUnit value={timeLeft.minutes} label="Minutes" />
+          <CountdownUnit value={timeLeft.seconds} label="Seconds" />
         </div>
 
         {/* Register Button */}
         <div className="evt-button-wrapper">
           <div className="evt-button-container">
             <button 
-              onClick={handleRegisterClick}
               className="evt-register-button" 
               style={serifStyle}
             >
@@ -188,37 +160,10 @@ const EventRegistration = () => {
           margin-bottom: 12px;
         }
 
-        .evt-flip-card {
+        .evt-countdown-display {
           position: relative;
           width: 100%;
           height: 100%;
-          transform-style: preserve-3d;
-        }
-
-        .evt-flip-card-inner {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          transform-style: preserve-3d;
-          transform-origin: center;
-        }
-
-        .evt-flip-card.evt-flipping .evt-flip-card-inner {
-          animation: evt-flipAnimation 0.6s ease-in-out;
-        }
-
-        @keyframes evt-flipAnimation {
-          0% { transform: rotateX(0deg); }
-          50% { transform: rotateX(90deg); }
-          100% { transform: rotateX(0deg); }
-        }
-
-        .evt-flip-card-front,
-        .evt-flip-card-back {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          backface-visibility: hidden;
           background: #ffffff;
           border: 2px solid #e2e8f0;
           border-radius: 14px;
@@ -228,26 +173,7 @@ const EventRegistration = () => {
           box-shadow: 0 4px 12px rgba(26, 43, 74, 0.08);
         }
 
-        .evt-flip-card-front { transform: rotateX(0deg); }
-        .evt-flip-card-back { transform: rotateX(180deg); }
-
-        .evt-flip-card.evt-flipping .evt-flip-card-front { animation: evt-flipFront 0.6s ease-in-out; }
-        .evt-flip-card.evt-flipping .evt-flip-card-back { animation: evt-flipBack 0.6s ease-in-out; }
-
-        @keyframes evt-flipFront {
-          0% { transform: rotateX(0deg); opacity: 1; }
-          50% { transform: rotateX(90deg); opacity: 0; }
-          100% { transform: rotateX(90deg); opacity: 0; }
-        }
-
-        @keyframes evt-flipBack {
-          0% { transform: rotateX(-90deg); opacity: 0; }
-          50% { transform: rotateX(-90deg); opacity: 0; }
-          100% { transform: rotateX(0deg); opacity: 1; }
-        }
-
-        .evt-flip-card-front span,
-        .evt-flip-card-back span {
+        .evt-countdown-display span {
           font-size: 48px;
           font-weight: 700;
           color: #1a2b4a;
@@ -432,7 +358,7 @@ const EventRegistration = () => {
           .evt-main-title { font-size: 34px; }
           .evt-countdown-wrapper { gap: 14px; margin-bottom: 40px; }
           .evt-countdown-number { width: 90px; height: 90px; margin-bottom: 10px; }
-          .evt-flip-card-front span, .evt-flip-card-back span { font-size: 40px; }
+          .evt-countdown-display span { font-size: 40px; }
           .evt-countdown-label { font-size: 12px; }
           .evt-register-button { padding: 16px 44px; font-size: 18px; }
           .evt-button-wrapper { margin-bottom: 40px; }
@@ -447,7 +373,7 @@ const EventRegistration = () => {
           .evt-header-section { margin-bottom: 35px; }
           .evt-main-title { font-size: 30px; }
           .evt-countdown-number { width: 80px; height: 80px; }
-          .evt-flip-card-front span, .evt-flip-card-back span { font-size: 36px; }
+          .evt-countdown-display span { font-size: 36px; }
           .evt-register-button { padding: 15px 38px; font-size: 17px; }
           .evt-info-card { padding: 22px 18px; }
         }

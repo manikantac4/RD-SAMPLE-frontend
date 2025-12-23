@@ -151,29 +151,7 @@ const AcademicContactWithCoordinators = () => {
               </div>
             </div>
 
-            <div className="mt-12 lg:mt-0 pt-8 border-t border-gray-100">
-              <p style={serifStyle} className="text-[#0B3C5D] font-bold mb-4 uppercase tracking-[0.2em] text-xs">
-                Digital Presence
-              </p>
-              <div className="flex items-center gap-6">
-                {[
-                  { icon: <Globe size={22} />, label: "Web", url: "#" },
-                  { icon: <Linkedin size={22} />, label: "LinkedIn", url: "#" }
-                ].map((item, index) => (
-                  <motion.a
-                    key={index}
-                    href={item.url}
-                    whileHover={{ scale: 1.15, color: "#D97706" }}
-                    className="text-[#0B3C5D] transition-colors p-1"
-                    aria-label={item.label}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {item.icon}
-                  </motion.a>
-                ))}
-              </div>
-            </div>
+           
           </motion.div>
 
           {/* RIGHT COLUMN: Faculty Coordinators */}
