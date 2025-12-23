@@ -19,24 +19,26 @@ const CodeFusionHero = () => {
     const resize = () => {
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
     class Particle {
-      constructor() { this.reset(); }
+      constructor() {
+        this.reset();
+      }
       reset() {
         this.x = Math.random() * window.innerWidth;
         this.y = Math.random() * window.innerHeight;
         this.r = Math.random() * 2 + 0.5;
         this.vy = Math.random() * 0.15 + 0.05;
-        this.a = Math.random() * 0.2 + 0.05;
+        this.a = Math.random() * 0.18 + 0.05;
       }
       update() {
         this.y -= this.vy;
         if (this.y < -10) this.y = window.innerHeight + 10;
       }
       draw() {
-        ctx.fillStyle = `rgba(12, 74, 110, ${this.a})`; // Deep sea blue particles
+        ctx.fillStyle = `rgba(12, 74, 110, ${this.a})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
         ctx.fill();
@@ -51,7 +53,10 @@ const CodeFusionHero = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      particles.forEach(p => { p.update(); p.draw(); });
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
       animationId = requestAnimationFrame(animate);
     };
 
@@ -68,73 +73,82 @@ const CodeFusionHero = () => {
 
   return (
     <section className="relative w-full h-[60vh] bg-white overflow-hidden flex flex-col items-center justify-center font-serif">
-      
-      {/* CLEAN BACKGROUND PARTICLES */}
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-40" />
 
-      {/* DARK SEA BLUE TITLE */}
-      <h1 className="relative z-10 flex dark-blue-title text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black">
+      {/* BACKGROUND PARTICLES */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 z-0 pointer-events-none opacity-40"
+      />
+
+      {/* TITLE */}
+      <h1 className="relative z-10 flex dark-blue-title text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-none">
         {title.split("").map((char, i) => (
           <span
             key={i}
             className="blue-letter"
-            style={{ animationDelay: `${i * 0.15}s` }} // Slower staggered entrance
+            style={{ animationDelay: `${i * 0.14}s` }}
           >
             {char}
           </span>
         ))}
       </h1>
 
-      {/* ANIMATED DATE - SLOWER FADE */}
-      <p className="relative z-10 mt-10 text-lg md:text-xl tracking-[0.4em] uppercase text-[#0c4a6e] animate-fade-in-long" 
-         style={{ animationDelay: '2s' }}>
-        January 23–24, 2026
+      {/* DATE */}
+      <p
+        className="relative z-20 mt-20 text-base md:text-lg tracking-[0.25em] text-[#0c4a6e] animate-fade-in-long"
+        style={{ animationDelay: "2s" }}
+      >
+        JANUARY&nbsp;23–24,&nbsp;2026
       </p>
 
-      {/* ANIMATED DIVIDER - SLOWER GROW */}
-      <div className="relative z-10 h-px bg-[#0ea5e9] mt-6 opacity-30 animate-grow-width-long" 
-           style={{ animationDelay: '2.5s' }} />
+      {/* DIVIDER */}
+      <div
+        className="relative z-20 w-48 h-[2px] bg-[#0ea5e9] mt-10 opacity-60"
+        style={{ animationDelay: "2.4s" }}
+      />
 
-      {/* ANIMATED TAGLINE - SLOWER REVEAL */}
-      <p className="relative z-10 mt-6 text-xs md:text-sm italic tracking-[0.3em] text-[#334155] animate-reveal-text-long"
-         style={{ animationDelay: '3s' }}>
+      {/* TAGLINE */}
+      <p
+        className="relative z-20 mt-10 text-[11px] md:text-xs italic tracking-[0.18em] text-[#475569] animate-reveal-text-long"
+        style={{ animationDelay: "2.9s" }}
+      >
         Innovation with Discipline • Academic Hackathon
       </p>
 
+      {/* STYLES */}
       <style>{`
-        .dark-blue-title { perspective: 1500px; }
+        .dark-blue-title {
+          perspective: 1500px;
+        }
 
         .blue-letter {
           position: relative;
           display: inline-block;
-          margin: 0 0.05em;
+          margin: 0 0.045em;
           opacity: 0;
-          transform: translateY(60px) rotateX(-90deg);
-          filter: blur(10px);
-          animation: 
-            heavyRise 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards,
+          transform: translateY(48px) rotateX(-85deg);
+          filter: blur(8px);
+          animation:
+            heavyRise 1.3s cubic-bezier(0.19, 1, 0.22, 1) forwards,
             liquidFlow 8s ease-in-out infinite;
-          
-          /* ✨ DEEP SEA BLUE GRADIENT */
+
           background: linear-gradient(
             to bottom,
-            #0ea5e9 0%,   /* Bright surface blue */
-            #0c4a6e 50%,  /* Deep sea blue */
-            #082f49 100%  /* Midnight blue base */
+            #0ea5e9 0%,
+            #0c4a6e 50%,
+            #082f49 100%
           );
           background-size: 100% 200%;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
 
-          /* Subtle 3D Depth for white background */
-          text-shadow: 0 10px 20px rgba(12, 74, 110, 0.15);
+          text-shadow: 0 8px 16px rgba(12, 74, 110, 0.18);
         }
 
-        /* INCREASED ANIMATION TRANSITIONS */
         @keyframes heavyRise {
-          to { 
-            opacity: 1; 
-            transform: translateY(0) rotateX(0deg); 
+          to {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
             filter: blur(0);
           }
         }
@@ -146,30 +160,26 @@ const CodeFusionHero = () => {
 
         .animate-fade-in-long {
           opacity: 0;
-          transform: translateY(20px);
-          animation: slowFade 2s ease-out forwards;
-        }
-
-        .animate-grow-width-long {
-          width: 0;
-          animation: slowGrow 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+          transform: translateY(14px);
+          animation: slowFade 1.8s ease-out forwards;
         }
 
         .animate-reveal-text-long {
           opacity: 0;
-          animation: slowReveal 2.5s ease-out forwards;
+          animation: slowReveal 2.2s ease-out forwards;
         }
 
         @keyframes slowFade {
-          to { opacity: 0.8; transform: translateY(0); }
-        }
-
-        @keyframes slowGrow {
-          to { width: 200px; }
+          to {
+            opacity: 0.9;
+            transform: translateY(0);
+          }
         }
 
         @keyframes slowReveal {
-          to { opacity: 0.6; }
+          to {
+            opacity: 0.75;
+          }
         }
       `}</style>
     </section>
