@@ -53,12 +53,8 @@ const AcademicHeader = () => {
         </div>
       </div>
 
-      {/* Main Header */}
-      <header 
-        className={`bg-white transition-all duration-300 sticky top-0 z-50 ${
-          isScrolled ? 'shadow-lg' : ''
-        }`}
-      >
+      {/* Main Header - NOT STICKY */}
+      <header className="bg-white transition-all duration-300">
         {/* Main Branding Section */}
         <div className="container mx-auto px-4 sm:px-6 py-2">
           <div className="grid grid-cols-3 items-center gap-3">
@@ -144,11 +140,11 @@ const AcademicHeader = () => {
         </div>
       </header>
 
-      {/* OPTIMIZED Professional Navigation Bar with increased top margin */}
-      <nav className={`sticky top-0 z-40 transition-all duration-300 mt-6 ${
-        isScrolled ? 'shadow-xl backdrop-blur-sm' : ''
+      {/* STICKY Navigation Bar - Fixed on scroll */}
+      <nav className={`sticky top-0 z-50 transition-all duration-300 mt-6 ${
+        isScrolled ? 'shadow-xl backdrop-blur-md bg-white/95' : 'bg-transparent'
       }`}>
-        <div className="bg-transparent px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5">
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center justify-center" style={{ gap: '1.5cm' }}>
             {/* Home Icon */}
@@ -159,7 +155,7 @@ const AcademicHeader = () => {
                 flex items-center justify-center w-11 h-11 xl:w-12 xl:h-12 rounded-full transition-all duration-300
                 ${activeSection === 'home' 
                   ? 'bg-white text-black shadow-lg' 
-                  : 'text-gray-400 hover:text-black hover:bg-white hover:shadow-lg'
+                  : 'text-black hover:text-black hover:bg-white hover:shadow-lg'
                 }
               `}
             >
@@ -178,7 +174,7 @@ const AcademicHeader = () => {
                   px-5 xl:px-6 py-2.5 text-sm xl:text-base font-medium rounded-full transition-all duration-300 whitespace-nowrap
                   ${activeSection === item.id 
                     ? 'text-black bg-white shadow-lg scale-105' 
-                    : 'text-gray-300 hover:text-black hover:bg-white hover:shadow-lg hover:scale-105'
+                    : 'text-black hover:text-black hover:bg-white hover:shadow-lg hover:scale-105'
                   }
                 `}
               >
@@ -197,7 +193,7 @@ const AcademicHeader = () => {
                 flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
                 ${activeSection === 'home' 
                   ? 'bg-white text-black shadow-lg' 
-                  : 'text-gray-400 hover:text-black hover:bg-white hover:shadow-lg'
+                  : 'text-black hover:text-black hover:bg-white hover:shadow-lg'
                 }
               `}
             >
@@ -216,7 +212,7 @@ const AcademicHeader = () => {
                   px-4 py-2 text-xs font-medium rounded-full transition-all duration-300 whitespace-nowrap
                   ${activeSection === item.id 
                     ? 'text-black bg-white shadow-lg' 
-                    : 'text-gray-300 hover:text-black hover:bg-white hover:shadow-lg'
+                    : 'text-black hover:text-black hover:bg-white hover:shadow-lg'
                   }
                 `}
               >
@@ -245,7 +241,7 @@ const AcademicHeader = () => {
                   flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
                   ${activeSection === 'home' 
                     ? 'bg-white text-black shadow-lg' 
-                    : 'text-gray-400 hover:text-black hover:bg-white hover:shadow-lg'
+                    : 'text-black hover:text-black hover:bg-white hover:shadow-lg'
                   }
                 `}
               >
@@ -253,11 +249,11 @@ const AcademicHeader = () => {
                   <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                 </svg>
               </a>
-              <span className="text-white font-medium text-sm">Menu</span>
+              <span className="text-black font-medium text-sm">Menu</span>
             </div>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex items-center justify-center w-10 h-10 bg-white rounded-full text-black hover:bg-white hover:shadow-xl transition-all duration-300"
+              className="flex items-center justify-center w-10 h-10 bg-white rounded-full text-black hover:bg-white hover:shadow-xl transition-all duration-300 shadow-md"
             >
               {isMobileMenuOpen ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -271,76 +267,76 @@ const AcademicHeader = () => {
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Side Navigation */}
-        <div className={`
-          md:hidden fixed top-0 right-0 h-full w-72 bg-[#1a1a1a] shadow-2xl transform transition-transform duration-300 ease-in-out z-50
-          ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
-        `}>
-          {/* Mobile Menu Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-800">
-            <h3 className="text-white font-bold text-lg">Menu</h3>
-            <button
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Mobile Navigation Items */}
-          <nav className="py-6 px-4 space-y-2">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => handleNavClick(item.id)}
-                className={`
-                  flex items-center gap-3 px-5 py-3.5 rounded-xl text-sm font-medium transition-all duration-300
-                  ${activeSection === item.id 
-                    ? 'bg-white text-black' 
-                    : 'text-gray-300 hover:text-black hover:bg-white'
-                  }
-                `}
-              >
-                {item.id === 'home' && (
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                  </svg>
-                )}
-                {item.id === 'contact' && (
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                  </svg>
-                )}
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Footer */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-800">
-            <a
-              href="#contact"
-              onClick={() => handleNavClick('contact')}
-              className="block w-full px-5 py-3 text-sm font-medium text-center text-white bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg"
-            >
-              Get in Touch
-            </a>
-          </div>
+      {/* Mobile Side Navigation */}
+      <div className={`
+        md:hidden fixed top-0 right-0 h-full w-72 bg-[#1a1a1a] shadow-2xl transform transition-transform duration-300 ease-in-out z-[100]
+        ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+      `}>
+        {/* Mobile Menu Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-800">
+          <h3 className="text-white font-bold text-lg">Menu</h3>
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-gray-400 hover:text-white transition-colors"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
-        {/* Mobile Overlay */}
-        {isMobileMenuOpen && (
-          <div
-            className="md:hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"
-            onClick={() => setIsMobileMenuOpen(false)}
-          ></div>
-        )}
-      </nav>
+        {/* Mobile Navigation Items */}
+        <nav className="py-6 px-4 space-y-2">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={() => handleNavClick(item.id)}
+              className={`
+                flex items-center gap-3 px-5 py-3.5 rounded-xl text-sm font-medium transition-all duration-300
+                ${activeSection === item.id 
+                  ? 'bg-white text-black' 
+                  : 'text-white hover:text-black hover:bg-white'
+                }
+              `}
+            >
+              {item.id === 'home' && (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
+              )}
+              {item.id === 'contact' && (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+              )}
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Mobile Menu Footer */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-800">
+          <a
+            href="#contact"
+            onClick={() => handleNavClick('contact')}
+            className="block w-full px-5 py-3 text-sm font-medium text-center text-white bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[90]"
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+      )}
 
       <style>{`
         /* Golden Background with Bokeh Effect */
