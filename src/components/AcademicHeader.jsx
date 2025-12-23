@@ -4,8 +4,12 @@ import SpringerLogo from '../assets/srpinger.webp';
 import RDLogo from '../assets/rdlogo.webp';
 import GoldenLogo from '../assets/golden.png';
 import Herosection from "../components/hero";
+<<<<<<< HEAD
 import Aboutsection from "../components/about";
 import Eventtimeline from "../components/eventtimeline";
+=======
+
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
 const AcademicHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -37,35 +41,35 @@ const AcademicHeader = () => {
 
   return (
     <div className="w-full">
+<<<<<<< HEAD
       {/* Golden Jubilee Animated Banner */}
       <div className="relative py-2 sm:py-3 overflow-hidden border-b-2 border-yellow-600 golden-banner">
+=======
+      {/* Golden Jubilee Animated Banner - Reduced Height */}
+      <div className="relative py-1 overflow-hidden border-b border-yellow-600 golden-banner">
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
         <div className="absolute inset-0 overflow-hidden">
           <div className="bokeh bokeh-1"></div>
           <div className="bokeh bokeh-2"></div>
           <div className="bokeh bokeh-3"></div>
           <div className="bokeh bokeh-4"></div>
-          <div className="bokeh bokeh-5"></div>
-          <div className="bokeh bokeh-6"></div>
-          <div className="bokeh bokeh-7"></div>
-          <div className="bokeh bokeh-8"></div>
         </div>
         
         <div className="relative z-10 overflow-hidden">
+<<<<<<< HEAD
           <div className="whitespace-nowrap text-center px-4">
             <span className="text-xs sm:text-sm md:text-base font-bold tracking-wide text-red-700 sparkle-text">
+=======
+          <div className="whitespace-nowrap text-center">
+            <span className="text-xs font-bold tracking-wide text-red-700 sparkle-text">
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
               Golden Jubilee Year of Siddhartha Academy of General & Technical Education, Vijayawada
             </span>
           </div>
         </div>
-        
-        <div className="absolute inset-0 pointer-events-none z-20">
-          <div className="text-sparkle sparkle-1"></div>
-          <div className="text-sparkle sparkle-2"></div>
-          <div className="text-sparkle sparkle-3"></div>
-          <div className="text-sparkle sparkle-4"></div>
-        </div>
       </div>
 
+<<<<<<< HEAD
       {/* Main Header - Non-Fixed */}
       <header className="bg-white shadow-md">
         {/* Main Branding Section */}
@@ -78,28 +82,63 @@ const AcademicHeader = () => {
                 src={Logo}
                 alt="V.R. Siddhartha Academy Logo" 
                 className="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-auto object-contain"
+=======
+      {/* Main Header - Reduced Padding and Logo Sizes */}
+      <header 
+        className={`bg-white transition-all duration-300 sticky top-0 z-50 ${
+          isScrolled ? 'shadow-lg' : ''
+        }`}
+      >
+        {/* Main Branding Section - More Compact */}
+        <div className="container mx-auto px-4 sm:px-6 py-2">
+          <div className="grid grid-cols-3 items-center gap-3">
+            
+            {/* LEFT DIV: VRS Logo + 50 Years Logo */}
+            <div className="flex justify-start items-center gap-4 md:gap-6">
+              <img 
+                src={Logo}
+                alt="V.R. Siddhartha Academy Logo" 
+                className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain"
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                 onError={(e) => {
                   e.target.style.display = 'none';
                 }}
               />
+<<<<<<< HEAD
               <img 
                 src={GoldenLogo}
                 alt="50 Years Golden Jubilee" 
                 className="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-auto object-contain"
+=======
+
+              <img 
+                src={GoldenLogo}
+                alt="50 Years Golden Jubilee" 
+                className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain"
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
+<<<<<<< HEAD
               {/* Fallback */}
               <div className="hidden bg-gradient-to-br from-yellow-400 to-amber-600 h-16 sm:h-20 md:h-24 lg:h-28 w-16 sm:w-20 md:w-24 lg:w-28 rounded-full items-center justify-center shadow-lg">
                 <div className="text-center">
                   <span className="text-white font-black text-xl sm:text-2xl md:text-3xl block leading-none">50</span>
                   <span className="text-white text-[10px] sm:text-xs md:text-sm font-bold">YEARS</span>
+=======
+              {/* Fallback if Golden Logo not found */}
+              <div className="hidden bg-gradient-to-br from-yellow-400 to-amber-600 h-12 sm:h-14 md:h-16 lg:h-20 w-12 sm:w-14 md:w-16 lg:w-20 rounded-full items-center justify-center shadow-lg">
+                <div className="text-center">
+                  <span className="text-white font-black text-lg sm:text-xl block leading-none">50</span>
+                  <span className="text-white text-[8px] sm:text-[9px] font-bold">YEARS</span>
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                 </div>
               </div>
             </div>
 
+<<<<<<< HEAD
             {/* CENTER: Title */}
             <div className="flex flex-col items-center text-center">
               <div className="inline-block">
@@ -129,6 +168,71 @@ const AcademicHeader = () => {
                   src={RDLogo}
                   alt="Research Conclave" 
                   className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto object-contain"
+=======
+            {/* CENTER DIV: Title - More Compact */}
+            <div className="flex flex-col items-center text-center">
+              <div className="inline-block">
+                <h1 className="
+                  font-serif
+                  font-extrabold
+                  text-[20px] sm:text-[26px] md:text-[32px] lg:text-[38px]
+                  tracking-[0.06em]
+                  leading-none
+                  text-[#0b2c6f]
+                ">
+                  SIDDHARTHA
+                </h1>
+                <div className="h-[1.5px] md:h-[2px] bg-[#0b2c6f] w-full mt-[1px] md:mt-[2px]"></div>
+              </div>
+
+              <p className="
+                font-serif
+                text-[10px] sm:text-[11px] md:text-[13px] lg:text-[14px]
+                font-bold
+                tracking-[0.05em]
+                text-black
+                mt-1
+              ">
+                ACADEMY OF HIGHER EDUCATION
+              </p>
+
+              <p className="
+                font-serif
+                text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px]
+                text-black
+                mt-0.5
+              ">
+                An Institution <span className="font-bold uppercase">Deemed to be University</span>
+              </p>
+
+              <p className="
+                font-serif
+                text-[8px] sm:text-[9px] md:text-[10px]
+                text-black
+                mt-0.5
+              ">
+                (Under Section 3 of UGC Act, 1956)
+              </p>
+
+              <p className="
+                font-serif
+                text-[7px] sm:text-[8px] md:text-[9px]
+                text-black
+                mt-0.5
+              ">
+                (Sponsored by Siddhartha Academy), Vijayawada, A.P
+              </p>
+            </div>
+
+            {/* RIGHT DIV: RD Conclave + Springer Logos */}
+            <div className="flex justify-end items-center gap-2">
+              {/* Research Conclave Logo */}
+              <div className="hidden md:block">
+                <img 
+                  src={RDLogo}
+                  alt="Research Conclave" 
+                  className="h-20 sm:h-24 md:h-28 w-auto object-contain"
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                   onError={(e) => {
                     e.target.style.display = 'none';
                   }}
@@ -138,7 +242,11 @@ const AcademicHeader = () => {
                 <img 
                   src={SpringerLogo}
                   alt="Springer" 
+<<<<<<< HEAD
                   className="h-28 lg:h-32 xl:h-36 w-auto object-contain"
+=======
+                  className="h-20 sm:h-24 md:h-28 w-auto object-contain"
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
                   onError={(e) => {
                     e.target.style.display = 'none';
                   }}
@@ -286,6 +394,7 @@ const AcademicHeader = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
         {/* Mobile Side Navigation */}
         <div className={`
           lg:hidden fixed top-0 right-0 h-full w-72 bg-[#1a1a1a] shadow-2xl transform transition-transform duration-300 ease-in-out z-50
@@ -362,6 +471,28 @@ const AcademicHeader = () => {
 
       <style>{`
         /* Golden Background with Bokeh Effect */
+=======
+        {/* Navigation Bar - More Compact */}
+        <nav className="bg-[#1a2b4a] border-t border-gray-700">
+          <div className="container mx-auto px-2 sm:px-4 md:px-6">
+            <ul className="flex flex-wrap items-center justify-center gap-0.5">
+              {['Home', 'About', 'Industry-Academia Meet', 'inSAHEthon', 'Journal Publication', 'Speakers', 'Schedule', 'Download', 'Contact us'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="block px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 text-white text-[10px] sm:text-xs font-semibold hover:bg-orange-500 hover:text-white transition-all duration-300"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <style>{`
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
         .golden-banner {
           background: linear-gradient(135deg, 
             #f4d03f 0%, 
@@ -379,14 +510,13 @@ const AcademicHeader = () => {
           50% { background-position: 100% 50%; }
         }
 
-        /* Bokeh Light Effects */
         @keyframes bokeh-float {
           0%, 100% {
             transform: translateY(0) scale(1);
             opacity: 0.4;
           }
           50% {
-            transform: translateY(-20px) scale(1.2);
+            transform: translateY(-15px) scale(1.2);
             opacity: 0.8;
           }
         }
@@ -399,74 +529,42 @@ const AcademicHeader = () => {
         }
 
         .bokeh-1 {
-          width: 60px;
-          height: 60px;
-          top: -15px;
-          left: 5%;
+          width: 40px;
+          height: 40px;
+          top: -10px;
+          left: 10%;
           animation: bokeh-float 6s ease-in-out infinite;
         }
 
         .bokeh-2 {
-          width: 50px;
-          height: 50px;
-          top: 8px;
-          left: 20%;
+          width: 35px;
+          height: 35px;
+          top: 5px;
+          left: 40%;
           animation: bokeh-float 7s ease-in-out infinite 1s;
         }
 
         .bokeh-3 {
-          width: 70px;
-          height: 70px;
-          top: -20px;
-          left: 40%;
+          width: 45px;
+          height: 45px;
+          top: -8px;
+          left: 70%;
           animation: bokeh-float 8s ease-in-out infinite 2s;
         }
 
         .bokeh-4 {
-          width: 55px;
-          height: 55px;
-          top: 5px;
-          left: 60%;
+          width: 38px;
+          height: 38px;
+          top: 3px;
+          left: 90%;
           animation: bokeh-float 6.5s ease-in-out infinite 3s;
         }
 
-        .bokeh-5 {
-          width: 65px;
-          height: 65px;
-          top: -10px;
-          left: 75%;
-          animation: bokeh-float 7.5s ease-in-out infinite 4s;
-        }
-
-        .bokeh-6 {
-          width: 45px;
-          height: 45px;
-          top: 12px;
-          left: 88%;
-          animation: bokeh-float 6.8s ease-in-out infinite 2.5s;
-        }
-
-        .bokeh-7 {
-          width: 52px;
-          height: 52px;
-          top: 6px;
-          left: 12%;
-          animation: bokeh-float 7.2s ease-in-out infinite 1.5s;
-        }
-
-        .bokeh-8 {
-          width: 58px;
-          height: 58px;
-          top: -8px;
-          left: 50%;
-          animation: bokeh-float 6.3s ease-in-out infinite 3.5s;
-        }
-
-        /* Red Text Styling */
         .sparkle-text {
           font-weight: 700;
           text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
+<<<<<<< HEAD
 
         /* Subtle Sparkle Animation */
         @keyframes text-sparkle {
@@ -517,6 +615,8 @@ const AcademicHeader = () => {
         html {
           scroll-behavior: smooth;
         }
+=======
+>>>>>>> 9402caf8bfe26df1ade4c36493723f75d19ae841
       `}</style>
     </div>
   );
