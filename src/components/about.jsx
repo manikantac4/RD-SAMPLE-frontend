@@ -10,28 +10,36 @@ const EventRegistration = () => {
   const serifStyle = { fontFamily: '"Times New Roman", Times, serif' };
 
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const targetDate = new Date('2026-01-23T00:00:00+05:30');
-      const now = new Date();
-      const difference = targetDate - now;
+  const calculateTimeLeft = () => {
+    const targetDate = new Date('2026-01-23T00:00:00+05:30');
+    const now = new Date();
+    const difference = targetDate - now;
 
-      if (difference > 0) {
-        const newTime = {
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        };
-        setPrevTime(timeLeft);
-        setTimeLeft(newTime);
-      }
-    };
+    if (difference > 0) {
+      const newTime = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      };
 
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
+      // Use a functional update to set both states safely
+      setTimeLeft(prev => {
+        setPrevTime(prev); // Save the old state before updating to the new one
+        return newTime;
+      });
+    }
+  };
 
-    return () => clearInterval(timer);
-  }, [timeLeft]);
+  // Run once immediately on mount
+  calculateTimeLeft();
+  
+  // Set the interval
+  const timer = setInterval(calculateTimeLeft, 1000);
+
+  // Cleanup on unmount
+  return () => clearInterval(timer);
+}, []); // Empty array ensures this effect only runs ONCE on mount
 
     const handleRegisterClick = () => {
     navigate('/register');
