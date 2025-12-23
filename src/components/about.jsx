@@ -33,7 +33,7 @@ const EventRegistration = () => {
     return () => clearInterval(timer);
   }, [timeLeft]);
 
-  const handleRegisterClick = () => {
+    const handleRegisterClick = () => {
     navigate('/register');
   };
 
